@@ -1,24 +1,26 @@
 const db = require("../index.js");
 
 module.exports = {
-  getAllUsers: (cb) => {
+  getAllUsers: () => {
     var sql = `select * from users`;
-    db.query(sql, (err, data) => {
-      if (err) {
-        cb(err);
-      } else {
-        cb(null, data);
-      }
+    return new Promise((resolve, reject) => {
+      db.query(sql, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(results);
+      });
     });
   },
-  getUser: (id, cb) => {
+  getUser: async (id) => {
     var sql = `select * from users where id = ${id}`;
-    db.query(sql, (err, data) => {
-      if (err) {
-        cb(err);
-      } else {
-        cb(null, data);
-      }
+    return new Promise((resolve, reject) => {
+      db.query(sql, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(results);
+      });
     });
   },
   postUser: (
@@ -27,18 +29,16 @@ module.exports = {
     location,
     verified,
     url,
-    profile_image_url_https,
-    cb
+    profile_image_url_https
   ) => {
-    var sql = `insert into users (name, screen_name, location, verified, url, profile_image_url_https)
-               values ('${name}', '${screen_name}', '${location}', ${verified}, '${url}', '${profile_image_url_https}')`;
-
-    db.query(sql, (err, data) => {
-      if (err) {
-        cb(err);
-      } else {
-        cb(null, data);
-      }
+    var sql = `insert into users (name, screen_name, location, verified, url, profile_image_url_https) values ('${name}', '${screen_name}', '${location}', ${verified}, '${url}', '${profile_image_url_https}')`;
+    return new Promise((resolve, reject) => {
+      db.query(sql, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(results);
+      });
     });
   },
   updateUser: (
@@ -48,27 +48,28 @@ module.exports = {
     location,
     verified,
     url,
-    profile_image_url_https,
-    cb
+    profile_image_url_https
   ) => {
     var sql = `update users set name = '${name}', screen_name = '${screen_name}', location = '${location}', verified =  ${verified}, url =  '${url}', profile_image_url_https =  '${profile_image_url_https}' where id = ${id}`;
 
-    db.query(sql, (err, data) => {
-      if (err) {
-        cb(err);
-      } else {
-        cb(null, data);
-      }
+    return new Promise((resolve, reject) => {
+      db.query(sql, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(results);
+      });
     });
   },
-  deleteUser: (id, cb) => {
+  deleteUser: (id) => {
     var sql = `delete from users where id = ${id}`;
-    db.query(sql, (err, data) => {
-      if (err) {
-        cb(err);
-      } else {
-        cb(null, data);
-      }
+    return new Promise((resolve, reject) => {
+      db.query(sql, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(results);
+      });
     });
   },
 };

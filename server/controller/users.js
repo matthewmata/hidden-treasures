@@ -1,17 +1,23 @@
 const models = require("../../database/models/users.js");
 
 // Handlers
-const getAllUsers = async(req, reply) => {
-  await models.getAllUsers((err, data) => {
-    reply.send(err || data);
-  });
+const getAllUsers = async (req, reply) => {
+  try {
+    const users = await models.getAllUsers();
+    return users;
+  } catch (error) {
+    return error;
+  }
 };
 
 const getUser = async (req, reply) => {
   const { id } = req.params;
-  await models.getUser(id, (err, data) => {
-    reply.send(err || data);
-  });
+  try {
+    const user = await models.getUser(id);
+    return user;
+  } catch (error) {
+    return error;
+  }
 };
 
 const addUser = async (req, reply) => {
@@ -23,21 +29,19 @@ const addUser = async (req, reply) => {
     url,
     profile_image_url_https,
   } = req.body;
-  await models.postUser(
-    name,
-    screen_name,
-    location,
-    verified,
-    url,
-    profile_image_url_https,
-    (err) => {
-      if (err) {
-        reply.send(err);
-      } else {
-        reply.send("Successful Post");
-      }
-    }
-  );
+  try {
+    await models.postUser(
+      name,
+      screen_name,
+      location,
+      verified,
+      url,
+      profile_image_url_https
+    );
+    return "Posted";
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const updateUser = async (req, reply) => {
@@ -50,25 +54,35 @@ const updateUser = async (req, reply) => {
     url,
     profile_image_url_https,
   } = req.body;
-  await models.updateUser(
-    id,
-    name,
-    screen_name,
-    location,
-    verified,
-    url,
-    profile_image_url_https,
-    (err, data) => {
-      reply.send(err || data);
-    }
-  );
+  try {
+    await models.updateUser(
+      id,
+      name,
+      screen_name,
+      location,
+      verified,
+      url,
+      profile_image_url_https,
+      (err, data) => {
+        reply.send(err || data);
+      }
+    );
+    return "Updated";
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const deleteUser = async (req, reply) => {
   const { id } = req.params;
-  await models.deleteUser(id, (err, data) => {
-    reply.send(err || data);
-  });
+  try {
+    await models.deleteUser(id, (err, data) => {
+      reply.send(err || data);
+    });
+    return "Deleted";
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 module.exports = {
