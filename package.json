@@ -1,13 +1,11 @@
 {
-  "name": "sellme.io",
+  "name": "hidden-treasures",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.27.2",
-    "bulma": "^0.9.3",
     "fastify": "^3.29.0",
     "fastify-bcrypt-plugin": "^1.0.6",
     "mysql": "^2.18.1",
