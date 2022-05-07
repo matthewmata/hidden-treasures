@@ -16,16 +16,16 @@ const items_routes = [
     url: "/api/items",
     handler: itemController.addItem,
   },
-  // {
-  //   method: "PUT",
-  //   url: "/api/items/:item_id",
-  //   handler: itemController.updateItem,
-  // },
-  // {
-  //   method: "DELETE",
-  //   url: "/api/items/:item_id",
-  //   handler: itemController.deleteItem,
-  // },
+  {
+    method: "PUT",
+    url: "/api/items/:item_id",
+    handler: itemController.updateItem,
+  },
+  {
+    method: "DELETE",
+    url: "/api/items/:item_id",
+    handler: itemController.deleteItem,
+  },
 ];
 
 module.exports = items_routes;

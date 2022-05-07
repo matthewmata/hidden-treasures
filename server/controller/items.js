@@ -11,8 +11,9 @@ const getAllItems = async (req, reply) => {
 };
 
 const getItem = async (req, reply) => {
+  const { item_id } = req.params;
   try {
-    const item = await models.getItem();
+    const item = await models.getItem(item_id);
     reply.code(200).send(item);
   } catch (error) {
     reply.code(400).send(error);
@@ -85,8 +86,84 @@ const addItem = async (req, reply) => {
   }
 };
 
+const updateItem = async (req, reply) => {
+  const { item_id } = req.params;
+  const {
+    title,
+    price,
+    title_city,
+    postal_code,
+    description,
+    make,
+    model,
+    size,
+    condition_description,
+    language,
+    cryptocurrency_ok,
+    delivery_ok,
+    email,
+    show_phone_number,
+    phone_calls_ok,
+    text_sms_ok,
+    phone_number,
+    extension,
+    contact_name,
+    show_address,
+    street,
+    cross_street,
+    city,
+    item_image_url_https,
+    url,
+  } = req.body;
+  try {
+    await models.updateItem(
+      item_id,
+      title,
+      price,
+      title_city,
+      postal_code,
+      description,
+      make,
+      model,
+      size,
+      condition_description,
+      language,
+      cryptocurrency_ok,
+      delivery_ok,
+      email,
+      show_phone_number,
+      phone_calls_ok,
+      text_sms_ok,
+      phone_number,
+      extension,
+      contact_name,
+      show_address,
+      street,
+      cross_street,
+      city,
+      item_image_url_https,
+      url
+    );
+    reply.code(201).send("Successfully updated item");
+  } catch (error) {
+    reply.code(400).send(error);
+  }
+};
+
+const deleteItem = async (req, reply) => {
+  const { item_id } = req.params;
+  try {
+    await models.deleteItem(item_id);
+    reply.code(200).send("Successfully deleted item");
+  } catch (error) {
+    reply.code(400).send(error);
+  }
+};
+
 module.exports = {
   getAllItems,
   getItem,
   addItem,
+  updateItem,
+  deleteItem
 };

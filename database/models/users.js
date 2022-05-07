@@ -51,9 +51,9 @@ module.exports = {
     password_hash,
     profile_image_url_https
   ) => {
-    var sql = `update users set name = '${name}', screen_name = '${screen_name}', verified =  ${verified}, email =  '${email}', password_hash = '${password_hash}', profile_image_url_https = '${profile_image_url_https}' where user_id = ${id}`;
+    var sql = `update users set name = '${name}', screen_name = '${screen_name}', verified = ${verified}, email = '${email}', password_hash = '${password_hash}', profile_image_url_https = '${profile_image_url_https}' where user_id = ${id}`;
 
-    return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
           return reject(error);
