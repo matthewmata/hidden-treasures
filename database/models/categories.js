@@ -2,7 +2,7 @@ const db = require("../index.js");
 
 module.exports = {
   getAllCategories: () => {
-    var sql = `select * from categories`;
+    const sql = `select * from categories`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -12,8 +12,8 @@ module.exports = {
       });
     });
   },
-  getCategory: async (id) => {
-    var sql = `select * from categories where category_id = ${id}`;
+  getCategory: (id) => {
+    const sql = `select * from categories where category_id = ${id}`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -24,7 +24,7 @@ module.exports = {
     });
   },
   addCategory: (name) => {
-    var sql = `insert into categories (name) values ('${name}')`;
+    const sql = `insert into categories (name) values ('${name}')`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -35,7 +35,7 @@ module.exports = {
     });
   },
   updateCategory: (id, name) => {
-    var sql = `update categories set name = '${name}' where category_id = ${id}`;
+    const sql = `update categories set name = '${name}' where category_id = ${id}`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -46,7 +46,7 @@ module.exports = {
     });
   },
   deleteCategory: (id) => {
-    var sql = `delete from categories where category_id = ${id}`;
+    const sql = `delete from categories where category_id = ${id}`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {

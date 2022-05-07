@@ -2,7 +2,7 @@ const db = require("../index.js");
 
 module.exports = {
   getAllUsers: () => {
-    var sql = `select * from users`;
+    const sql = `select * from users`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -13,7 +13,7 @@ module.exports = {
     });
   },
   getUser: async (id) => {
-    var sql = `select * from users where user_id = ${id}`;
+    const sql = `select * from users where user_id = ${id}`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -31,7 +31,7 @@ module.exports = {
     password_hash,
     profile_image_url_https
   ) => {
-    var sql = `insert into users (name, screen_name, verified, email, password_hash, profile_image_url_https) values ('${name}', '${screen_name}', ${verified}, '${email}', '${password_hash}', '${profile_image_url_https}')`;
+    const sql = `insert into users (name, screen_name, verified, email, password_hash, profile_image_url_https) values ('${name}', '${screen_name}', ${verified}, '${email}', '${password_hash}', '${profile_image_url_https}')`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -51,7 +51,7 @@ module.exports = {
     password_hash,
     profile_image_url_https
   ) => {
-    var sql = `update users set name = '${name}', screen_name = '${screen_name}', verified = ${verified}, email = '${email}', password_hash = '${password_hash}', profile_image_url_https = '${profile_image_url_https}' where user_id = ${id}`;
+    const sql = `update users set name = '${name}', screen_name = '${screen_name}', verified = ${verified}, email = '${email}', password_hash = '${password_hash}', profile_image_url_https = '${profile_image_url_https}' where user_id = ${id}`;
 
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
@@ -63,7 +63,7 @@ module.exports = {
     });
   },
   deleteUser: (id) => {
-    var sql = `delete from users where user_id = ${id}`;
+    const sql = `delete from users where user_id = ${id}`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
