@@ -4,9 +4,9 @@ const models = require("../../database/models/users.js");
 const getAllUsers = async (req, reply) => {
   try {
     const users = await models.getAllUsers();
-    return users;
+    reply.code(200).send(users);
   } catch (error) {
-    return error;
+    reply.code(400).send(error);
   }
 };
 
@@ -14,9 +14,9 @@ const getUser = async (req, reply) => {
   const { id } = req.params;
   try {
     const user = await models.getUser(id);
-    return user;
+    reply.code(200).send(user);
   } catch (error) {
-    return error;
+    reply.code(400).send(error);
   }
 };
 
@@ -24,64 +24,66 @@ const addUser = async (req, reply) => {
   const {
     name,
     screen_name,
-    location,
     verified,
-    url,
+    email,
+    password_hash,
     profile_image_url_https,
   } = req.body;
   try {
+    const hashedPassword = await req.bcrypt.hash(password_hash);
     await models.postUser(
       name,
       screen_name,
-      location,
       verified,
-      url,
+      email,
+      hashedPassword,
       profile_image_url_https
     );
-    return "Posted";
+    reply.code(201).send("Successfully created new user");
   } catch (error) {
-    console.log(error);
+    reply.code(400).send(error);
   }
 };
 
+// NEED TO FIX ONCE AUTH IS DONE
 const updateUser = async (req, reply) => {
   const { id } = req.params;
   const {
     name,
     screen_name,
-    location,
     verified,
-    url,
+    email,
+    password_hash,
     profile_image_url_https,
   } = req.body;
   try {
+    const hashedPassword = await req.bcrypt.hash(password_hash);
+    const isPasswordCompared = await app.bcrypt.compare(
+      password_hash,
+      hashedPassword
+    );
     await models.updateUser(
       id,
       name,
       screen_name,
-      location,
       verified,
-      url,
-      profile_image_url_https,
-      (err, data) => {
-        reply.send(err || data);
-      }
+      email,
+      password_hash,
+      profile_image_url_https
     );
-    return "Updated";
+    reply.code(201).send("Successfully created new user");
   } catch (error) {
-    console.log(error);
+    reply.code(400).send(error);
   }
 };
 
 const deleteUser = async (req, reply) => {
   const { id } = req.params;
   try {
-    await models.deleteUser(id, (err, data) => {
-      reply.send(err || data);
-    });
-    return "Deleted";
+    await models.deleteUser(id);
+    reply.code(200).send("Successfully deleted user");
   } catch (error) {
-    console.log(error);
+    reply.code(400).send(error);
   }
 };
 

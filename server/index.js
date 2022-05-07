@@ -1,8 +1,20 @@
 const app = require("fastify")({
   logger: true,
 });
+const fastifyBcrypt = require("fastify-bcrypt-plugin");
 
-// Register routes to handle blog posts
+// Register routes
+// app.decorateRequest('fastifyBcrypt',  fastifyBcrypt)
+app.register(fastifyBcrypt, {
+  saltWorkFactor: 12,
+});
+
+//LOG IN
+// const isPasswordCompared = await app.bcrypt.compare(
+//   password_hash,
+//   hashedPassword
+// );
+
 const routes = require("./routes/users");
 routes.forEach((route, index) => {
   app.route(route);
