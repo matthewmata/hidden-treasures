@@ -30,6 +30,7 @@ create table categories (
 
 create table items (
   item_id bigint(20) not null auto_increment,
+  url_id varchar(36) default (uuid()),
   title varchar(75) not null,
   price varchar(255) null,
   title_city varchar(255) null,
