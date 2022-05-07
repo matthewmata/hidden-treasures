@@ -1,8 +1,8 @@
 const db = require("../index.js");
 
 module.exports = {
-  getAllUsers: () => {
-    var sql = `select * from users`;
+  getAllCategories: () => {
+    var sql = `select * from categories`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -12,8 +12,8 @@ module.exports = {
       });
     });
   },
-  getUser: async (id) => {
-    var sql = `select * from users where user_id = ${id}`;
+  getCategory: async (id) => {
+    var sql = `select * from categories where category_id = ${id}`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -23,15 +23,8 @@ module.exports = {
       });
     });
   },
-  postUser: (
-    name,
-    screen_name,
-    verified,
-    email,
-    password_hash,
-    profile_image_url_https
-  ) => {
-    var sql = `insert into users (name, screen_name, verified, email, password_hash, profile_image_url_https) values ('${name}', '${screen_name}', ${verified}, '${email}', '${password_hash}', '${profile_image_url_https}')`;
+  addCategory: (name) => {
+    var sql = `insert into categories (name) values ('${name}')`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -41,18 +34,8 @@ module.exports = {
       });
     });
   },
-  // FIX ONCE AUTH DONE
-  updateUser: (
-    id,
-    name,
-    screen_name,
-    verified,
-    email,
-    password_hash,
-    profile_image_url_https
-  ) => {
-    var sql = `update users set name = '${name}', screen_name = '${screen_name}', verified =  ${verified}, email =  '${email}', password_hash = '${password_hash}', profile_image_url_https = '${profile_image_url_https}' where user_id = ${id}`;
-
+  updateCategory: (id, name) => {
+    var sql = `update categories set name = '${name}' where category_id = ${id}`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -62,8 +45,8 @@ module.exports = {
       });
     });
   },
-  deleteUser: (id) => {
-    var sql = `delete from users where user_id = ${id}`;
+  deleteCategory: (id) => {
+    var sql = `delete from categories where category_id = ${id}`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {

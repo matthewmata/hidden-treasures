@@ -11,9 +11,9 @@ const getAllUsers = async (req, reply) => {
 };
 
 const getUser = async (req, reply) => {
-  const { id } = req.params;
+  const { user_id } = req.params;
   try {
-    const user = await models.getUser(id);
+    const user = await models.getUser(user_id);
     reply.code(200).send(user);
   } catch (error) {
     reply.code(400).send(error);
@@ -47,7 +47,7 @@ const addUser = async (req, reply) => {
 
 // NEED TO FIX ONCE AUTH IS DONE
 const updateUser = async (req, reply) => {
-  const { id } = req.params;
+  const { user_id } = req.params;
   const {
     name,
     screen_name,
@@ -58,12 +58,12 @@ const updateUser = async (req, reply) => {
   } = req.body;
   try {
     const hashedPassword = await req.bcrypt.hash(password_hash);
-    const isPasswordCompared = await app.bcrypt.compare(
-      password_hash,
-      hashedPassword
-    );
+    // const isPasswordCompared = await req.bcrypt.compare(
+    //   password_hash,
+    //   hashedPassword
+    // );
     await models.updateUser(
-      id,
+      user_id,
       name,
       screen_name,
       verified,
@@ -71,16 +71,16 @@ const updateUser = async (req, reply) => {
       password_hash,
       profile_image_url_https
     );
-    reply.code(201).send("Successfully created new user");
+    reply.code(201).send("Successfully updated user");
   } catch (error) {
     reply.code(400).send(error);
   }
 };
 
 const deleteUser = async (req, reply) => {
-  const { id } = req.params;
+  const { user_id } = req.params;
   try {
-    await models.deleteUser(id);
+    await models.deleteUser(user_id);
     reply.code(200).send("Successfully deleted user");
   } catch (error) {
     reply.code(400).send(error);

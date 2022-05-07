@@ -15,7 +15,11 @@ app.register(fastifyBcrypt, {
 //   hashedPassword
 // );
 
-const routes = require("./routes/users");
+const user_routes = require("./routes/users");
+const item_routes = require("./routes/items");
+const category_routes = require("./routes/categories");
+const routes = [...user_routes, ...category_routes, ...item_routes];
+
 routes.forEach((route, index) => {
   app.route(route);
 });

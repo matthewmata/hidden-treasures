@@ -8,7 +8,7 @@ const users_routes = [
   },
   {
     method: "GET",
-    url: "/api/users/:id",
+    url: "/api/users/:user_id",
     handler: userController.getUser,
   },
   {
@@ -18,12 +18,12 @@ const users_routes = [
   },
   {
     method: "PUT",
-    url: "/api/users/:id",
+    url: "/api/users/:user_id",
     handler: userController.updateUser,
   },
   {
     method: "DELETE",
-    url: "/api/users/:id",
+    url: "/api/users/:user_id",
     handler: userController.deleteUser,
   },
 ];
