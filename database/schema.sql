@@ -9,9 +9,6 @@ use sellme;
 create table users (
   user_id bigint(20) not null auto_increment,
   url_id varchar(36) default (uuid()),
-  name varchar(50) not null,
-  screen_name varchar(50) not null,
-  verified boolean default 0,
   email varchar(50) not null,
   password_hash varchar(60) not null,
   profile_image_url_https varchar(255),
