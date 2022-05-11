@@ -1,26 +1,26 @@
-const models = require("../../database/models/items.js");
+const models = require("../../database/models/posts.js");
 
 // Handlers
-const getAllItems = async (req, reply) => {
+const getAllPosts = async (req, reply) => {
   try {
-    const items = await models.getAllItems();
-    reply.code(200).send(items);
+    const posts = await models.getAllPosts();
+    reply.code(200).send(posts);
   } catch (error) {
     reply.code(400).send(error);
   }
 };
 
-const getItem = async (req, reply) => {
-  const { item_id } = req.params;
+const getPost = async (req, reply) => {
+  const { post_id } = req.params;
   try {
-    const item = await models.getItem(item_id);
-    reply.code(200).send(item);
+    const post = await models.getPost(post_id);
+    reply.code(200).send(post);
   } catch (error) {
     reply.code(400).send(error);
   }
 };
 
-const addItem = async (req, reply) => {
+const addPost = async (req, reply) => {
   const {
     title,
     price,
@@ -45,13 +45,13 @@ const addItem = async (req, reply) => {
     street,
     cross_street,
     city,
-    item_image_url_https,
+    post_image_url_https,
     url,
     category_id,
     user_id,
   } = req.body;
   try {
-    await models.addItem(
+    await models.addPost(
       title,
       price,
       title_city,
@@ -75,19 +75,19 @@ const addItem = async (req, reply) => {
       street,
       cross_street,
       city,
-      item_image_url_https,
+      post_image_url_https,
       url,
       category_id,
       user_id
     );
-    reply.code(201).send("Successfully created new item");
+    reply.code(201).send("Successfully created new post");
   } catch (error) {
     reply.code(400).send(error);
   }
 };
 
-const updateItem = async (req, reply) => {
-  const { item_id } = req.params;
+const updatePost = async (req, reply) => {
+  const { post_id } = req.params;
   const {
     title,
     price,
@@ -112,12 +112,12 @@ const updateItem = async (req, reply) => {
     street,
     cross_street,
     city,
-    item_image_url_https,
+    post_image_url_https,
     url,
   } = req.body;
   try {
-    await models.updateItem(
-      item_id,
+    await models.updatePost(
+      post_id,
       title,
       price,
       title_city,
@@ -141,29 +141,29 @@ const updateItem = async (req, reply) => {
       street,
       cross_street,
       city,
-      item_image_url_https,
+      post_image_url_https,
       url
     );
-    reply.code(201).send("Successfully updated item");
+    reply.code(201).send("Successfully updated post");
   } catch (error) {
     reply.code(400).send(error);
   }
 };
 
-const deleteItem = async (req, reply) => {
-  const { item_id } = req.params;
+const deletePost = async (req, reply) => {
+  const { post_id } = req.params;
   try {
-    await models.deleteItem(item_id);
-    reply.code(200).send("Successfully deleted item");
+    await models.deletePost(post_id);
+    reply.code(200).send("Successfully deleted post");
   } catch (error) {
     reply.code(400).send(error);
   }
 };
 
 module.exports = {
-  getAllItems,
-  getItem,
-  addItem,
-  updateItem,
-  deleteItem,
+  getAllPosts,
+  getPost,
+  addPost,
+  updatePost,
+  deletePost,
 };

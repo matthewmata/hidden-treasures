@@ -16,9 +16,9 @@ app.register(fastifyBcrypt, {
 // );
 
 const user_routes = require("./routes/users");
-const item_routes = require("./routes/items");
+const post_routes = require("./routes/posts");
 const category_routes = require("./routes/categories");
-const routes = [...user_routes, ...category_routes, ...item_routes];
+const routes = [...user_routes, ...category_routes, ...post_routes];
 
 routes.forEach((route, index) => {
   app.route(route);

@@ -25,8 +25,8 @@ create table categories (
   unique index uq_category_id (category_id)
 );
 
-create table items (
-  item_id bigint(20) not null auto_increment,
+create table posts (
+  posts_id bigint(20) not null auto_increment,
   url_id varchar(36) default (uuid()),
   title varchar(75) not null,
   price varchar(255),
@@ -51,13 +51,13 @@ create table items (
   street varchar(255),
   cross_street varchar(255),
   city varchar(255),
-  item_image_url_https varchar(255),
+  post_image_url_https varchar(255),
   url varchar(255) not null,
   created_at timestamp default current_timestamp,
   category_id bigint(20) not null,
   user_id bigint(20) not null,
-  primary key(item_id),
-  unique index uq_item_id (item_id),
+  primary key(post_id),
+  unique index uq_post_id (post_id),
   foreign key(category_id) references categories(category_id),
   foreign key(user_id) references users(user_id)
 );
