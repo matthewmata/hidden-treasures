@@ -12,45 +12,54 @@ const Navbar = () => {
 
   return (
     <div className="nav-container">
-    <nav
-      className="navbar is-fixed-top"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div className="navbar-brand">
-        <div className="navbar-item">
-          <img src={diamond} alt="diamond" width="40" height="28" />
-          <div className="nav-icon-text">Hidden Treasures</div>
+      <nav
+        className="navbar is-fixed-top"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="navbar-brand">
+          <div className="navbar-item">
+            <img src={diamond} alt="diamond" width="40" height="28" />
+            <div className="nav-icon-text">Hidden Treasures</div>
+          </div>
+
+          <a
+            role="button"
+            className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbar-main"
+            href={() => false}
+            onClick={() => setisActive(!isActive)}
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
 
-        <a
-          role="button"
-          className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbar-main"
-          onClick={() => setisActive(!isActive)}
+        <div
+          id="navbar-main"
+          className={`navbar-menu ${isActive ? "is-active" : ""}`}
         >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div
-        id="navbar-main"
-        className={`navbar-menu ${isActive ? "is-active" : ""}`}
-      >
-        <div className="navbar-start">
-          <a onClick={() => navigate("/")} className="navbar-item">
-            Home
-          </a>
-
-          <div className="navbar-item has-dropdown is-hoverable">
-            <a onClick={() => navigate("/categories")} className="navbar-link">
-              Categories
+          <div className="navbar-start">
+            <a
+              onClick={() => navigate("/")}
+              className="navbar-item"
+              href={() => false}
+            >
+              Home
             </a>
-            {/* {!isActive ? (
+
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a
+                onClick={() => navigate("/categories")}
+                className="navbar-link"
+                href={() => false}
+              >
+                Categories
+              </a>
+              {/* {!isActive ? (
                           <div className="navbar-dropdown">
               {tempCategories.map((element, index) => (
                 <a className="navbar-item" key={index}>
@@ -59,36 +68,38 @@ const Navbar = () => {
               ))}
             </div>
             ) : ""} */}
-            <div className="navbar-dropdown">
-              {tempCategories.map((element, index) => (
-                <a className="navbar-item" key={index}>
-                  {element}
-                </a>
-              ))}
+              <div className="navbar-dropdown">
+                {tempCategories.map((element, index) => (
+                  <a className="navbar-item" key={index} href={() => false}>
+                    {element}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-              <a
-                onClick={() => navigate("/new-post/choose-category")}
-                className="button is-primary"
-              >
-                <strong>New Post</strong>
-              </a>
-              <a
-                onClick={() => navigate("/profile/postings")}
-                className="button is-light"
-              >
-                Profile
-              </a>
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons">
+                <a
+                  onClick={() => navigate("/new-post/choose-category")}
+                  className="button is-primary"
+                  href={() => false}
+                >
+                  <strong>New Post</strong>
+                </a>
+                <a
+                  onClick={() => navigate("/profile/postings")}
+                  className="button is-light"
+                  href={() => false}
+                >
+                  Profile
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
     </div>
   );
 };
