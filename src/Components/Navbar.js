@@ -1,26 +1,35 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import diamond from "../images/diamond.svg"
+
+
 const Navbar = () => {
-  //   const [isActive, setisActive] = useState(false);
+  const [isActive, setisActive] = useState(false);
   const navigate = useNavigate();
+  const tempCategories = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+
 
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
+    <div className="nav-container">
+    <nav
+      className="navbar is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div className="navbar-brand">
-        <a onClick={() => navigate("/")} className="navbar-item">
-          <img
-            src="https://bulma.io/images/bulma-logo.png"
-            width="112"
-            height="28"
-          />
-        </a>
+        <div className="navbar-item">
+          <img src={diamond} alt="diamond" width="40" height="28" />
+          <div className="nav-icon-text">Hidden Treasures</div>
+        </div>
 
         <a
           role="button"
-          className="navbar-burger"
+          className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
           aria-label="menu"
           aria-expanded="false"
           data-target="navbar-main"
+          onClick={() => setisActive(!isActive)}
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -28,7 +37,10 @@ const Navbar = () => {
         </a>
       </div>
 
-      <div id="navbar-main" className="navbar-menu">
+      <div
+        id="navbar-main"
+        className={`navbar-menu ${isActive ? "is-active" : ""}`}
+      >
         <div className="navbar-start">
           <a onClick={() => navigate("/")} className="navbar-item">
             Home
@@ -38,13 +50,21 @@ const Navbar = () => {
             <a onClick={() => navigate("/categories")} className="navbar-link">
               Categories
             </a>
-
+            {/* {!isActive ? (
+                          <div className="navbar-dropdown">
+              {tempCategories.map((element, index) => (
+                <a className="navbar-item" key={index}>
+                  {element}
+                </a>
+              ))}
+            </div>
+            ) : ""} */}
             <div className="navbar-dropdown">
-              <a className="navbar-item">About</a>
-              <a className="navbar-item">Jobs</a>
-              <a className="navbar-item">Contact</a>
-              <hr className="navbar-divider" />
-              <a className="navbar-item">Report an issue</a>
+              {tempCategories.map((element, index) => (
+                <a className="navbar-item" key={index}>
+                  {element}
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -69,6 +89,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    </div>
   );
 };
 

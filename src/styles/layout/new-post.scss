@@ -1,0 +1,23 @@
+.new-post-container {
+    padding: 30px 50px 50px 50px;
+}
+
+.new-post-title {
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
+.category-container {
+    padding-bottom: 5px;
+}
+
+.next-buttons {
+    justify-content: right;
+}
+
+
+@media (max-width: 770px) {
+    .next-buttons-top {
+        display: none;
+    }
+}
