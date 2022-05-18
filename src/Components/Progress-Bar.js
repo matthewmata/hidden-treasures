@@ -10,7 +10,7 @@ const ProgressBar = ({ activeIndex }) => {
     },
     {
       index: 2,
-      label: "Add Picture",
+      label: "Add Pictures",
     },
     {
       index: 3,

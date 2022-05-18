@@ -27,7 +27,7 @@ function App() {
         <Route path="new-post/choose-category" element={<ChooseCategory />} />
         <Route path="new-post/add-information" element={<AddInformation />} />
         <Route path="new-post/add-picture" element={<AddPicture />} />
-        <Route path="new-post/review" element={<ReviewPost />} />
+        <Route path="new-post/review-post" element={<ReviewPost />} />
         <Route path="profile/postings" element={<Postings />} />
         <Route path="profile/drafts" element={<Drafts />} />
         <Route path="profile/settings" element={<Settings />} />
