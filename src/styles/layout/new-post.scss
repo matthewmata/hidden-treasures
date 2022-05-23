@@ -23,6 +23,10 @@
     margin-right: 8px;
 }
 
+.require-popup {
+    color: $red;
+}
+
 @media (max-width: 770px) {
     .next-buttons-top {
         display: none;

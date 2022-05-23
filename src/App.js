@@ -5,10 +5,7 @@ import LogIn from "./Pages/Log-In";
 import SignUp from "./Pages/Sign-Up";
 import Categories from "./Pages/Categories";
 // import Post from "./Pages/Post";
-import ChooseCategory from "./Pages/New-Post/Choose-Category";
-import AddInformation from "./Pages/New-Post/Add-Information";
-import AddPicture from "./Pages/New-Post/Add-Pictures";
-import ReviewPost from "./Pages/New-Post/Review-Post";
+import NewPost from "./Pages/New-Post";
 import Postings from "./Pages/Profile/Postings";
 import Drafts from "./Pages/Profile/Drafts";
 import Settings from "./Pages/Profile/Settings";
@@ -24,10 +21,7 @@ function App() {
         <Route path="categories" element={<Categories />} />
         {/* <Route path="search/:category_id" element={<Search />} /> */}
         {/* <Route path="post/:post_id" element={<Post />} /> */}
-        <Route path="new-post/choose-category" element={<ChooseCategory />} />
-        <Route path="new-post/add-information" element={<AddInformation />} />
-        <Route path="new-post/add-picture" element={<AddPicture />} />
-        <Route path="new-post/review-post" element={<ReviewPost />} />
+        <Route path="new-post" element={<NewPost />} />
         <Route path="profile/postings" element={<Postings />} />
         <Route path="profile/drafts" element={<Drafts />} />
         <Route path="profile/settings" element={<Settings />} />

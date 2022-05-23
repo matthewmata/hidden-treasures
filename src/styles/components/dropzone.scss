@@ -1,0 +1,23 @@
+.dropzone-hero {
+    margin: 20px auto 25px auto;
+    max-width: 1600px;
+    border-radius: 15px;
+    background-color: $grey;
+}
+
+.images-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.item-container {
+    flex: none;
+    width: 25%;
+}
+
+.item-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}

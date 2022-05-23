@@ -82,7 +82,7 @@ const Navbar = () => {
             <div className="navbar-item">
               <div className="buttons">
                 <a
-                  onClick={() => navigate("/new-post/choose-category")}
+                  onClick={() => navigate("/new-post")}
                   className="button is-primary"
                   href={() => false}
                 >

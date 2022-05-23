@@ -1,22 +1,4 @@
-const ProgressBar = ({ activeIndex }) => {
-  const steps = [
-    {
-      index: 0,
-      label: "Choose Category",
-    },
-    {
-      index: 1,
-      label: "Add Information",
-    },
-    {
-      index: 2,
-      label: "Add Pictures",
-    },
-    {
-      index: 3,
-      label: "Review Post",
-    },
-  ];
+const ProgressBar = ({ activeIndex, steps }) => {
 
   return (
     <div className="progress-container">
