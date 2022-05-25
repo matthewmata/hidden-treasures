@@ -1,6 +1,10 @@
 import { useForm } from "react-hook-form";
 
-const AddInformation = ({ setActiveIndex, postInfo, handleChange }) => {
+const AddInformation = ({
+  setActiveIndex,
+  postInfo,
+  handleChange,
+}) => {
   const {
     register,
     handleSubmit,
@@ -8,8 +12,8 @@ const AddInformation = ({ setActiveIndex, postInfo, handleChange }) => {
   } = useForm();
 
   const onSubmit = () => {
-    setActiveIndex(2)
-  }
+    setActiveIndex(2);
+  };
 
   return (
     <div className="new-post-container">
@@ -18,7 +22,7 @@ const AddInformation = ({ setActiveIndex, postInfo, handleChange }) => {
         <div className="buttons next-buttons next-buttons-top">
           <div className="previous-button">
             <a
-              className="button is-light progress-button"
+              className="button progress-button"
               onClick={() => setActiveIndex(0)}
               href={() => false}
             >
@@ -60,6 +64,7 @@ const AddInformation = ({ setActiveIndex, postInfo, handleChange }) => {
               className="input"
               type="text"
               value={postInfo.price}
+              placeholder="Price in $"
               onChange={handleChange("price")}
             />
           </div>
@@ -216,7 +221,7 @@ const AddInformation = ({ setActiveIndex, postInfo, handleChange }) => {
       <div className="buttons next-buttons next-buttons-bottom">
         <div className="previous-button">
           <a
-            className="button is-light progress-button"
+            className="button progress-button"
             onClick={() => setActiveIndex(0)}
             href={() => false}
           >

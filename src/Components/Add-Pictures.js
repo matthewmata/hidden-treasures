@@ -1,6 +1,7 @@
 import Dropzone from "./Dropzone";
 
 const AddPictures = ({ setActiveIndex, selectedImages, setSelectedImages }) => {
+  
   return (
     <div className="new-post-container">
       <div className="columns">
@@ -8,7 +9,7 @@ const AddPictures = ({ setActiveIndex, selectedImages, setSelectedImages }) => {
         <div className="buttons next-buttons next-buttons-top">
           <div className="previous-button">
             <a
-              className="button is-light progress-button"
+              className="button progress-button"
               onClick={() => setActiveIndex(1)}
               href={() => false}
             >
@@ -25,7 +26,7 @@ const AddPictures = ({ setActiveIndex, selectedImages, setSelectedImages }) => {
         </div>
       </div>
 
-      <div>This posting has {selectedImages.length} images, of a maximum 8</div>
+      <div>This posting has {selectedImages.length} images, of a maximum 9</div>
       <div>Upload best image first - it will be featured.</div>
 
       <Dropzone
@@ -36,7 +37,7 @@ const AddPictures = ({ setActiveIndex, selectedImages, setSelectedImages }) => {
       <div className="buttons next-buttons next-buttons-bottom">
         <div className="previous-button">
           <a
-            className="button is-light progress-button"
+            className="button progress-button"
             onClick={() => setActiveIndex(1)}
             href={() => false}
           >

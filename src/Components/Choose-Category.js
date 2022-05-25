@@ -43,7 +43,7 @@ const ChooseCategory = ({ setActiveIndex, postInfo, handleChange }) => {
         </div>
       </div>
       <div>
-        <strong className="require-popup">{errors.category_id?.message}</strong>
+        <strong className="require-popup">{errors.category?.message}</strong>
       </div>
       {categories.map((element, index) => (
         <div className="category-container" key={index}>

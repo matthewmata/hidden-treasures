@@ -9,7 +9,7 @@ import ReviewPost from "../Components/Review-Post";
 import Footer from "../Components/Footer";
 
 const NewPost = () => {
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [postInfo, setPostInfo] = useState({});
   const [selectedImages, setSelectedImages] = useState([]);
 
@@ -17,6 +17,8 @@ const NewPost = () => {
     setPostInfo({ ...postInfo, [name]: e.target.value });
     console.log(postInfo);
   };
+
+  
 
   const steps = [
     {
@@ -65,7 +67,13 @@ const NewPost = () => {
               setSelectedImages={setSelectedImages}
             />
           ),
-          3: <ReviewPost setActiveIndex={setActiveIndex} postInfo={postInfo} />,
+          3: (
+            <ReviewPost
+              setActiveIndex={setActiveIndex}
+              postInfo={postInfo}
+              selectedImages={selectedImages}
+            />
+          ),
         }[activeIndex]
       }
       <Footer />

@@ -1,7 +1,72 @@
-const ReviewPost = () => {
+import Item from "./Item"
+
+const ReviewPost = ({ setActiveIndex, postInfo, selectedImages }) => {
   return (
-    <div>
-      <div>Review</div>
+    <div className="new-post-container">
+      <div className="columns">
+        <div className="column">
+          <button
+            className="button edit-button is-responsive"
+            onClick={() => setActiveIndex(0)}
+          >
+            Edit Category
+          </button>
+          <button
+            className="button edit-button is-responsive"
+            onClick={() => setActiveIndex(1)}
+          >
+            Edit Information
+          </button>
+          <button
+            className="button edit-button is-responsive"
+            onClick={() => setActiveIndex(2)}
+          >
+            Edit Pictures
+          </button>
+        </div>
+        <div className="buttons next-buttons next-buttons-top">
+          <a className="button is-primary progress-button" href={() => false}>
+            <strong>Publish</strong>
+          </a>
+        </div>
+      </div>
+
+      <section className="hero unpublished-hero">
+        <div className="hero-body unpublished-hero-body has-text-centered">
+          <p className="subtitle">Below is your unpublished draft</p>
+        </div>
+      </section>
+
+      <Item postInfo={postInfo} selectedImages={selectedImages} />
+
+      <div className="columns">
+        <div className="column">
+          <button
+            className="button edit-button is-responsive"
+            onClick={() => setActiveIndex(0)}
+          >
+            Edit Category
+          </button>
+          <button
+            className="button edit-button is-responsive"
+            onClick={() => setActiveIndex(1)}
+          >
+            Edit Information
+          </button>
+          <button
+            className="button edit-button is-responsive"
+            onClick={() => setActiveIndex(2)}
+          >
+            Edit Pictures
+          </button>
+        </div>
+
+        <div className="buttons next-buttons next-buttons-top">
+          <a className="button is-primary progress-button" href={() => false}>
+            <strong>Publish</strong>
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

@@ -59,15 +59,6 @@ const Navbar = () => {
               >
                 Categories
               </a>
-              {/* {!isActive ? (
-                          <div className="navbar-dropdown">
-              {tempCategories.map((element, index) => (
-                <a className="navbar-item" key={index}>
-                  {element}
-                </a>
-              ))}
-            </div>
-            ) : ""} */}
               <div className="navbar-dropdown">
                 {tempCategories.map((element, index) => (
                   <a className="navbar-item" key={index} href={() => false}>
@@ -90,7 +81,7 @@ const Navbar = () => {
                 </a>
                 <a
                   onClick={() => navigate("/profile/postings")}
-                  className="button is-light"
+                  className="button"
                   href={() => false}
                 >
                   Profile

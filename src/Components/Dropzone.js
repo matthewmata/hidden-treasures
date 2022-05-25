@@ -20,12 +20,13 @@ const Dropzone = ({ selectedImages, setSelectedImages }) => {
 
   const deletePicture = (index) => {
     setSelectedImages(selectedImages.filter((_, i) => i !== index));
+    // console.log(selectedImages);
   };
 
   return (
     <div>
       <section className="hero is-light dropzone-hero">
-        {selectedImages.length < 8 ? (
+        {selectedImages.length < 9 ? (
           <div className="hero-body has-text-centered" {...getRootProps()}>
             <input {...getInputProps()} />
             {isDragActive ? (
