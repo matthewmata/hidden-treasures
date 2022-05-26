@@ -30,12 +30,12 @@ create table pictures (
   url varchar(100) not null,
   primary key(picture_id),
   post_id bigint(20),
-  unique index uq_picture_id (picture_id)
-  foreign key(posts_id) references posts(posts_id),
+  unique index uq_picture_id (picture_id),
+  foreign key(post_id) references posts(post_id)
 );
 
 create table posts (
-  posts_id bigint(20) not null auto_increment,
+  post_id bigint(20) not null auto_increment,
   url_id varchar(255) default (uuid()),
   title varchar(75) not null,
   price varchar(255) not null,

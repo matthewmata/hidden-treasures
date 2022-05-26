@@ -24,7 +24,7 @@ const ReviewPost = ({ setActiveIndex, postInfo, selectedImages }) => {
             Edit Pictures
           </button>
         </div>
-        <div className="buttons next-buttons next-buttons-top">
+        <div className="buttons next-buttons">
           <a className="button is-primary progress-button" href={() => false}>
             <strong>Publish</strong>
           </a>
@@ -61,7 +61,7 @@ const ReviewPost = ({ setActiveIndex, postInfo, selectedImages }) => {
           </button>
         </div>
 
-        <div className="buttons next-buttons next-buttons-top">
+        <div className="buttons next-buttons">
           <a className="button is-primary progress-button" href={() => false}>
             <strong>Publish</strong>
           </a>

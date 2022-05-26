@@ -37,6 +37,7 @@
     font-size: 24px;
     z-index: 1;
     color: $blue;
+    transition: transform 0.5s ease 0.5s, background 0.5s ease, border-color 0.5s ease;
 }
 
 .progress-step.incomplete .step-number {
@@ -86,8 +87,30 @@
 
 .progress-step.complete:after {
     background: $blue;
+    animation: progressWidth 0.5s ease forwards;
 }
 
 .progress-step.incomplete:after {
     background: $grey;
+    animation: progressWidthReverse 0.5s ease forwards;
+}
+
+@keyframes progressWidth {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes progressWidthReverse {
+    0% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0%;
+    }
 }

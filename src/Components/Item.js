@@ -1,4 +1,14 @@
+import { useState } from "react";
+
 const Item = ({ postInfo, selectedImages }) => {
+  const [images, setImages] = useState([...selectedImages]);
+
+  const handleFeaturedImage = (index) => {
+      const nonFeaturedImages = images.slice(1);
+      const newFeaturedImage = nonFeaturedImages.splice(index, 1);
+      setImages([...newFeaturedImage, images[0], ...nonFeaturedImages]);
+  }
+
   const separator = (numb) => {
     var str = numb.toString().split(".");
     str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -12,10 +22,14 @@ const Item = ({ postInfo, selectedImages }) => {
       </h2>
       <div className="columns">
         <div className="column">
-          <img alt="Featured Item" src={selectedImages[0]?.preview} />
+          <img alt="Featured Item" src={images[0]?.preview} />
           <div className="columns images-container">
-            {selectedImages.slice(1)?.map((file, index) => (
-              <div className="column has-text-right item-container" key={index}>
+            {images.slice(1)?.map((file, index) => (
+              <div
+                className="column has-text-right item-container"
+                onClick={() => handleFeaturedImage(index)}
+                key={index}
+              >
                 <img
                   className="item-image"
                   src={file?.preview}

@@ -18,6 +18,9 @@ const NewPost = () => {
     console.log(postInfo);
   };
 
+  const handleFormSubmit = () => {
+
+  }
   
 
   const steps = [
@@ -72,6 +75,7 @@ const NewPost = () => {
               setActiveIndex={setActiveIndex}
               postInfo={postInfo}
               selectedImages={selectedImages}
+              handleFormSubmit={handleFormSubmit}
             />
           ),
         }[activeIndex]
