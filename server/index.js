@@ -5,7 +5,8 @@ const app = require("fastify")({
 const user_routes = require("./routes/users");
 const post_routes = require("./routes/posts");
 const category_routes = require("./routes/categories");
-const routes = [...user_routes, ...category_routes, ...post_routes];
+const picture_routes = require("./routes/pictures")
+const routes = [...user_routes, ...category_routes, ...post_routes, ...picture_routes];
 
 routes.forEach(route => {
   app.route(route);
