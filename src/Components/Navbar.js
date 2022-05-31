@@ -7,7 +7,24 @@ import diamond from "../images/diamond.svg"
 const Navbar = () => {
   const [isActive, setisActive] = useState(false);
   const navigate = useNavigate();
-  const tempCategories = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+  const categories = [
+    "all",
+    "appliances",
+    "bikes",
+    "boats",
+    "books",
+    "cars & trucks",
+    "cell phones",
+    "collectibles",
+    "electronics",
+    "furniture",
+    "jewelry",
+    "motorcycles",
+    "musical intruments",
+    "toys & games",
+    "videogames",
+  ];
+;
 
 
   return (
@@ -60,7 +77,7 @@ const Navbar = () => {
                 Categories
               </a>
               <div className="navbar-dropdown">
-                {tempCategories.map((element, index) => (
+                {categories.map((element, index) => (
                   <a className="navbar-item" key={index} href={() => false}>
                     {element}
                   </a>
