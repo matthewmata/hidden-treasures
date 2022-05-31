@@ -1,3 +1,6 @@
+// Execute this file from the command line by typing:
+// node database/seeder/categories.js
+
 const db = require("../index.js");
 
 const categories = [
@@ -18,17 +21,17 @@ const categories = [
 ];
 
 const seeder = () => {
-    categories.forEach(category => {
-        const sql = `insert into categories (name) values ('${category}')`;
-        return new Promise((resolve, reject) => {
-          db.query(sql, (error, results) => {
-            if (error) {
-              return reject(error);
-            }
-            return resolve(results);
-          });
-        });
-    })
+  categories.forEach((category) => {
+    const sql = `insert into categories (name) values ('${category}')`;
+    return new Promise((resolve, reject) => {
+      db.query(sql, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(results);
+      });
+    });
+  });
 };
 
 seeder();

@@ -18,7 +18,7 @@ const Home = () => {
           <div className="columns">
             <div className="hero-body column">
               <div className="container has-text-centered">
-                <p className="title">Hidden Treasures</p>
+                <p className="title hero-title">Hidden Treasures</p>
                 <p className="subtitle">
                   Hidden Treasures is a website for viewing and posting local
                   advertisements. It works a lot like the Classifieds section of
@@ -30,8 +30,8 @@ const Home = () => {
                 <p className="subtitle">
                   "One man's trash is another man's treasure" -Yotam Ottolenghi
                 </p>
-                <div className="field is-grouped">
-                  <p className="control">
+                <div className="hero-buttons-container">
+                  <p className="hero-button">
                     <button
                       className="button"
                       onClick={() => navigate("/categories")}
@@ -42,7 +42,7 @@ const Home = () => {
                       <span>Search for Treasure</span>
                     </button>
                   </p>
-                  <p className="control">
+                  <p className="hero-button">
                     <button
                       className="button"
                       onClick={() => navigate("/new-post")}

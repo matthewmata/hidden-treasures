@@ -1,35 +1,44 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Hero from "../Components/Hero";
+import Footer from "../Components/Footer";
 
 const Categories = () => {
   const navigate = useNavigate();
-  const category_id = 1;
-    const categories = [
-      { name: "all",
-        icon: <Hero />
-    },
-      "appliances",
-      "bikes",
-      "boats",
-      "books",
-      "cars & trucks",
-      "cell phones",
-      "collectibles",
-      "electronics",
-      "furniture",
-      "jewelry",
-      "motorcycles",
-      "musical intruments",
-      "toys & games",
-      "videogames",
-    ];
+  const categories = [
+    "all",
+    "appliances",
+    "bikes",
+    "boats",
+    "books",
+    "cars & trucks",
+    "cell phones",
+    "collectibles",
+    "electronics",
+    "furniture",
+    "jewelry",
+    "motorcycles",
+    "musical intruments",
+    "toys & games",
+    "videogames",
+  ];
 
   return (
     <div>
       <Navbar />
       <Hero title="Choose a Category" subTitle="Find your Treasure" />
-      <a onClick={() => navigate(`/search/${category_id}`)}>Categories</a>
+      <div className="new-post-container">
+        <h2 className="new-post-title column">Please choose a category</h2>
+        <div>
+          {categories.map((category, index) => (
+            <div className="category-container" key={index}>
+              <a onClick={() => navigate(`/search/${category}`)}>{category}</a> 
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 };

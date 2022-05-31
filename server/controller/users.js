@@ -21,56 +21,20 @@ const getUser = async (req, reply) => {
 };
 
 const addUser = async (req, reply) => {
-  const {
-    name,
-    screen_name,
-    verified,
-    email,
-    password_hash,
-    profile_image_url_https,
-  } = req.body;
+  const { email } = req.body;
   try {
-    const hashedPassword = await req.bcrypt.hash(password_hash);
-    await models.postUser(
-      name,
-      screen_name,
-      verified,
-      email,
-      hashedPassword,
-      profile_image_url_https
-    );
+    await models.addUser(email);
     reply.code(201).send("Successfully created new user");
   } catch (error) {
     reply.code(400).send(error);
   }
 };
 
-// NEED TO FIX ONCE AUTH IS DONE
 const updateUser = async (req, reply) => {
   const { user_id } = req.params;
-  const {
-    name,
-    screen_name,
-    verified,
-    email,
-    password_hash,
-    profile_image_url_https,
-  } = req.body;
+  const { email } = req.body;
   try {
-    const hashedPassword = await req.bcrypt.hash(password_hash);
-    // const isPasswordCompared = await req.bcrypt.compare(
-    //   password_hash,
-    //   hashedPassword
-    // );
-    await models.updateUser(
-      user_id,
-      name,
-      screen_name,
-      verified,
-      email,
-      password_hash,
-      profile_image_url_https
-    );
+    await models.updateUser(user_id, email);
     reply.code(201).send("Successfully updated user");
   } catch (error) {
     reply.code(400).send(error);

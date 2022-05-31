@@ -71,30 +71,30 @@ const AddInformation = ({
         </div>
         <div className="column is-one-fifth">
           <div className="field">
-            <label className="label">City</label>
-            <input
-              className="input"
-              type="text"
-              value={postInfo.city}
-              onChange={handleChange("city")}
-            />
-          </div>
-        </div>
-        <div className="column is-one-fifth">
-          <div className="field">
             <label className="label">
-              Postal Code
+              City
               <strong className="require-popup">
-                {errors.postal_code?.message}
+                {errors.city?.message}
               </strong>
             </label>
             <input
               className="input"
               type="text"
-              value={postInfo.postal_code}
-              {...register("postal_code", {
+              value={postInfo.city}
+              onChange={handleChange("city")}
+              {...register("city", {
                 required: " * Required *",
               })}
+            />
+          </div>
+        </div>
+        <div className="column is-one-fifth">
+          <div className="field">
+            <label className="label">Postal Code</label>
+            <input
+              className="input"
+              type="text"
+              value={postInfo.postal_code}
               onChange={handleChange("postal_code")}
             />
           </div>

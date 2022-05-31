@@ -23,15 +23,10 @@ module.exports = {
       });
     });
   },
-  postUser: (
-    name,
-    screen_name,
-    verified,
+  addUser: (
     email,
-    password_hash,
-    profile_image_url_https
   ) => {
-    const sql = `insert into users (name, screen_name, verified, email, password_hash, profile_image_url_https) values ('${name}', '${screen_name}', ${verified}, '${email}', '${password_hash}', '${profile_image_url_https}')`;
+    const sql = `insert into users (email) values ('${email}')`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -41,17 +36,12 @@ module.exports = {
       });
     });
   },
-  // FIX ONCE AUTH DONE
+
   updateUser: (
     id,
-    name,
-    screen_name,
-    verified,
     email,
-    password_hash,
-    profile_image_url_https
   ) => {
-    const sql = `update users set name = '${name}', screen_name = '${screen_name}', verified = ${verified}, email = '${email}', password_hash = '${password_hash}', profile_image_url_https = '${profile_image_url_https}' where user_id = ${id}`;
+    const sql = `update users set email = '${email}' where user_id = ${id}`;
 
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
