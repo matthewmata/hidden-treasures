@@ -31,9 +31,10 @@ const getPicturesForPost = async (req, reply) => {
 };
 
 const addPicture = async (req, reply) => {
-  const { email } = req.body;
+  const { post_id } = req.params;
+  const { url } = req.body;
   try {
-    await models.addPicture(email);
+    await models.addPicture(post_id, url);
     reply.code(201).send("Successfully created new picture");
   } catch (error) {
     reply.code(400).send(error);

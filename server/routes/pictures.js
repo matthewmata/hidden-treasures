@@ -13,12 +13,12 @@ const pictures_routes = [
   },
   {
     method: "GET",
-    url: "/api/pictures/post/post:id",
+    url: "/api/pictures/post/:post_id",
     handler: pictureController.getPicturesForPost,
   },
   {
     method: "POST",
-    url: "/api/pictures",
+    url: "/api/pictures/:post_id",
     handler: pictureController.addPicture,
   },
   {

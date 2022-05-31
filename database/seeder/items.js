@@ -63,21 +63,21 @@ const prices = {
 }
 
 var a = {
-  title: "hockey stick",
-  price: "12.00",
-  city: "Carson",
-  postal_code: "90810",
-  description: "its cool",
-  make: "stick1",
-  model: "hard stick",
-  size: "L",
-  condition_description: "a",
-  contact_name: "s",
-  email: "g@gmail.com",
-  phone_number: "123-123-1231",
-  category_id: 1,
-  user_id: 1,
-};
+  "title": "hockey stick",
+  "price": "12.00",
+  "city": "Carson",
+  "postal_code": "90810",
+  "description": "its cool",
+  "make": "stick1",
+  "model": "hard stick",
+  "size": "L",
+  "condition_description": "a",
+  "contact_name": "s",
+  "email": "g@gmail.com",
+  "phone_number": "123-123-1231",
+  "category_id": 1,
+  "user_id": 1,
+}
 
 // const seeder = () => {
 //   categories.forEach((category) => {

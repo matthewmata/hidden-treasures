@@ -34,8 +34,8 @@ module.exports = {
       });
     });
   },
-  addPicture: (url) => {
-    const sql = `insert into pictures (url) values ('${url}')`;
+  addPicture: (post_id, url) => {
+    const sql = `insert into pictures (url, post_id) values ('${url}', ${post_id})`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
