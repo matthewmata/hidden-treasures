@@ -12,6 +12,13 @@ routes.forEach(route => {
   app.route(route);
 });
 
+const path = require('path');
+const DistPath = path.join(__dirname, "..", "build");
+
+app.register(require("fastify-static"), {
+  root: DistPath,
+});
+
 // Run the server!
 app.listen(3000, (err) => {
   if (err) {

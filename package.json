@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bulma": "^0.9.4",
     "fastify": "^3.29.0",
+    "fastify-static": "^4.7.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.16",
     "react": "^18.1.0",
