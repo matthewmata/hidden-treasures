@@ -6,16 +6,6 @@ drop database hidden_treasures;
 create database hidden_treasures;
 use hidden_treasures;
 
-create table users (
-  user_id bigint(20) not null auto_increment,
-  url_id varchar(36) default (uuid()),
-  email varchar(50) not null,
-  created_at timestamp default current_timestamp,
-  primary key(user_id),
-  unique index uq_email (email),
-  unique index uq_user_id (user_id)
-);
-
 create table categories (
   category_id bigint(20) not null auto_increment,
   name varchar(100) not null,
@@ -43,8 +33,7 @@ create table posts (
   user_id bigint(20) not null,
   primary key(post_id),
   unique index uq_post_id (post_id),
-  foreign key(category_id) references categories(category_id),
-  foreign key(user_id) references users(user_id)
+  foreign key(category_id) references categories(category_id)
 );
 
 create table pictures (

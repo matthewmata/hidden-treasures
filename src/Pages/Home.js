@@ -13,8 +13,8 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <section class="hero is-fullheight is-info">
-        <div class="hero-body">
+      <section className="hero is-fullheight is-info">
+        <div className="hero-body">
           <div className="columns">
             <div className="hero-body column">
               <div className="container has-text-centered">

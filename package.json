@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "amazon-cognito-identity-js": "^5.2.9",
     "bulma": "^0.9.4",
     "fastify": "^3.29.0",
     "fastify-static": "^4.7.0",
