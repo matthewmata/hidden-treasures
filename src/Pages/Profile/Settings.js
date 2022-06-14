@@ -5,18 +5,16 @@ import ChangeEmail from "../../Components/Change-Email";
 import ChangePassword from "../../Components/Change-Password";
 
 import Navbar from "../../Components/Navbar";
+import Status from "../../auth/Status";
 
 const Settings = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-
   const { getSession } = useContext(AccountContext);
 
-
-  useEffect(() => {
-    getSession().then(() => {
-      setLoggedIn(true);
-    });
-  }, []);
+ useEffect(() => {
+   getSession().catch(() => {
+     navigate("/login");
+   });
+ }, []);
 
   const navigate = useNavigate();
 
@@ -27,13 +25,9 @@ const Settings = () => {
       <a onClick={() => navigate("/profile/drafts")}>Drafts</a>
       <a onClick={() => navigate("/profile/settings")}>Profile</a>
       <div>Settings</div>
-      {loggedIn && (
-        <>
-          <h1>Settings</h1>
-          <ChangePassword />
-          <ChangeEmail /> 
-        </>
-      )}
+      <Status />
+      <ChangePassword />
+      <ChangeEmail />
     </div>
   );
 };

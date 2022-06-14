@@ -1,3 +1,5 @@
+import { useContext, useEffect } from "react";
+import { AccountContext } from "../auth/Accounts";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Hero from "../Components/Hero";
@@ -5,6 +7,15 @@ import Footer from "../Components/Footer";
 
 const Categories = () => {
   const navigate = useNavigate();
+
+  const { getSession } = useContext(AccountContext);
+
+  useEffect(() => {
+    getSession().catch(() => {
+      navigate("/login");
+    });
+  }, []);
+
   const categories = [
     "all",
     "appliances",
@@ -32,7 +43,7 @@ const Categories = () => {
         <div>
           {categories.map((category, index) => (
             <div className="category-container" key={index}>
-              <a onClick={() => navigate(`/search/${category}`)}>{category}</a> 
+              <a onClick={() => navigate(`/search/${category}`)}>{category}</a>
             </div>
           ))}
         </div>

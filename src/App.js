@@ -8,12 +8,14 @@ import Categories from "./Pages/Categories";
 import NewPost from "./Pages/New-Post";
 import Postings from "./Pages/Profile/Postings";
 import Drafts from "./Pages/Profile/Drafts";
+import { useState, useContext, useEffect } from "react";
 import Settings from "./Pages/Profile/Settings";
 // import Search from "./Pages/Search";
 
 import { Account } from "./auth/Accounts";
 
 function App() {
+  
   return (
     <BrowserRouter>
       <Account>
@@ -22,8 +24,8 @@ function App() {
           <Route path="login" element={<LogIn />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="categories" element={<Categories />} />
-          {/* <Route path="search/:category_id" element={<Search />} /> */}
-          {/* <Route path="post/:post_id" element={<Post />} /> */}
+          {/* <Route path="search/:category_id" element={<Search/>} /> */}
+          {/* <Route path="post/:post_id" element={<Post/>} /> */}
           <Route path="new-post" element={<NewPost />} />
           <Route path="profile/postings" element={<Postings />} />
           <Route path="profile/drafts" element={<Drafts />} />

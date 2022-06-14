@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { AccountContext } from "../auth/Accounts";
+import { useNavigate } from "react-router-dom";
 
 import Navbar from "../Components/Navbar";
 import ProgressBar from "../Components/Progress-Bar";
@@ -13,6 +15,17 @@ const NewPost = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [postInfo, setPostInfo] = useState({});
   const [selectedImages, setSelectedImages] = useState([]);
+
+  const navigate = useNavigate();
+
+  const { getSession } = useContext(AccountContext);
+
+  useEffect(() => {
+    getSession().catch(() => {
+      navigate("/login");
+    });
+  }, []);
+
 
   const handleChange = (name) => (e) => {
     setPostInfo({ ...postInfo, [name]: e.target.value });

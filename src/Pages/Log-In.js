@@ -1,8 +1,8 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AccountContext } from "../auth/Accounts";
-// import Status from "../auth/Status";
+import Status from "../auth/Status";
 import ForgotPassword from "../Components/Forgot-Password";
 
 import diamond from "../images/diamond.svg";
@@ -16,7 +16,13 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { authenticate } = useContext(AccountContext);
+  const { authenticate, getSession } = useContext(AccountContext);
+
+  useEffect(() => {
+    getSession().then(() => {
+      navigate("/");
+    });
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,7 +40,7 @@ const Login = () => {
 
   return (
     <div>
-      {/* <Status /> */}
+      <Status />
 
       <section className="hero is-fullheight hero-color">
         <div className="hero-body-container">
