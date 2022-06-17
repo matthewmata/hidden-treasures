@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AccountContext } from "../auth/Accounts";
-import Status from "../auth/Status";
 import ForgotPassword from "../Components/Forgot-Password";
 
 import diamond from "../images/diamond.svg";
@@ -40,8 +39,6 @@ const Login = () => {
 
   return (
     <div>
-      <Status />
-
       <section className="hero is-fullheight hero-color">
         <div className="hero-body-container">
           <div className="website-name-box">

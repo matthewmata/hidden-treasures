@@ -15,7 +15,7 @@ create table categories (
 
 create table posts (
   post_id bigint(20) not null auto_increment,
-  url_id varchar(255) default (uuid()),
+  post_url_id varchar(255) not null,
   title varchar(75) not null,
   price varchar(255) not null,
   city varchar(255) not null,
@@ -30,17 +30,17 @@ create table posts (
   phone_number varchar(255),
   created_at timestamp default current_timestamp,
   category_id bigint(20) not null,
-  user_id bigint(20) not null,
+  user_id varchar(255) not null,
   primary key(post_id),
-  unique index uq_post_id (post_id),
+  unique index uq_post_url_id (post_url_id),
   foreign key(category_id) references categories(category_id)
 );
 
 create table pictures (
   picture_id bigint(20) not null auto_increment,
-  url varchar(100) not null,
+  picture_url varchar(100) not null,
   primary key(picture_id),
-  post_id bigint(20),
+  post_url_id varchar(255),
   unique index uq_picture_id (picture_id),
-  foreign key(post_id) references posts(post_id)
+  foreign key(post_url_id) references posts(post_url_id)
 );

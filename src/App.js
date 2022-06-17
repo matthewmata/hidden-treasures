@@ -8,7 +8,6 @@ import Categories from "./Pages/Categories";
 import NewPost from "./Pages/New-Post";
 import Postings from "./Pages/Profile/Postings";
 import Drafts from "./Pages/Profile/Drafts";
-import { useState, useContext, useEffect } from "react";
 import Settings from "./Pages/Profile/Settings";
 // import Search from "./Pages/Search";
 

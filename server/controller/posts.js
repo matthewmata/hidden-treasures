@@ -11,9 +11,9 @@ const getAllPosts = async (req, reply) => {
 };
 
 const getPost = async (req, reply) => {
-  const { post_id } = req.params;
+  const { post_url_id } = req.params;
   try {
-    const post = await models.getPost(post_id);
+    const post = await models.getPost(post_url_id);
     reply.code(200).send(post);
   } catch (error) {
     reply.code(400).send(error);
@@ -22,6 +22,7 @@ const getPost = async (req, reply) => {
 
 const addPost = async (req, reply) => {
   const {
+    post_url_id,
     title,
     price,
     city,
@@ -39,6 +40,7 @@ const addPost = async (req, reply) => {
   } = req.body;
   try {
     await models.addPost(
+      post_url_id,
       title,
       price,
       city,
@@ -52,7 +54,7 @@ const addPost = async (req, reply) => {
       email,
       phone_number,
       category_id,
-      user_id
+      user_id.replaceAll('-', '')
     );
     reply.code(201).send("Successfully created new post");
   } catch (error) {
@@ -61,7 +63,7 @@ const addPost = async (req, reply) => {
 };
 
 const updatePost = async (req, reply) => {
-  const { post_id } = req.params;
+  const { post_url_id } = req.params;
   const {
     title,
     price,
@@ -78,7 +80,7 @@ const updatePost = async (req, reply) => {
   } = req.body;
   try {
     await models.updatePost(
-      post_id,
+      post_url_id,
       title,
       price,
       city,
@@ -99,9 +101,9 @@ const updatePost = async (req, reply) => {
 };
 
 const deletePost = async (req, reply) => {
-  const { post_id } = req.params;
+  const { post_url_id } = req.params;
   try {
-    await models.deletePost(post_id);
+    await models.deletePost(post_url_id);
     reply.code(200).send("Successfully deleted post");
   } catch (error) {
     reply.code(400).send(error);

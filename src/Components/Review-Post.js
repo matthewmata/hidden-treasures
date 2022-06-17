@@ -1,6 +1,11 @@
 import Item from "./Item"
 
-const ReviewPost = ({ setActiveIndex, postInfo, selectedImages }) => {
+const ReviewPost = ({
+  setActiveIndex,
+  postInfo,
+  selectedImages,
+  handleFormSubmit,
+}) => {
   return (
     <div className="new-post-container">
       <div className="columns">
@@ -25,7 +30,11 @@ const ReviewPost = ({ setActiveIndex, postInfo, selectedImages }) => {
           </button>
         </div>
         <div className="buttons next-buttons">
-          <a className="button is-primary progress-button" href={() => false}>
+          <a
+            className="button is-primary progress-button"
+            href={() => false}
+            onClick={() => handleFormSubmit(selectedImages)}
+          >
             <strong>Publish</strong>
           </a>
         </div>
@@ -62,7 +71,11 @@ const ReviewPost = ({ setActiveIndex, postInfo, selectedImages }) => {
         </div>
 
         <div className="buttons next-buttons">
-          <a className="button is-primary progress-button" href={() => false}>
+          <a
+            className="button is-primary progress-button"
+            href={() => false}
+            onClick={() => handleFormSubmit(selectedImages)}
+          >
             <strong>Publish</strong>
           </a>
         </div>

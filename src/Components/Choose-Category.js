@@ -43,7 +43,7 @@ const ChooseCategory = ({ setActiveIndex, postInfo, handleChange }) => {
         </div>
       </div>
       <div>
-        <strong className="require-popup">{errors.category?.message}</strong>
+        <strong className="require-popup">{errors.category_id?.message}</strong>
       </div>
       {categories.map((element, index) => (
         <div className="category-container" key={index}>
@@ -51,12 +51,11 @@ const ChooseCategory = ({ setActiveIndex, postInfo, handleChange }) => {
             <input
               type="radio"
               name="answer"
-              value={element}
-              checked={postInfo.category === element}
-              {...register("category", {
+              value={index}
+              {...register("category_id", {
                 required: " * Required *",
               })}
-              onChange={handleChange("category")}
+              onChange={handleChange("category_id")}
             />
             {" " + element}
           </label>

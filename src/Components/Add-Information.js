@@ -79,12 +79,12 @@ const AddInformation = ({
             </label>
             <input
               className="input"
-              type="text"
-              value={postInfo.city}
-              onChange={handleChange("city")}
               {...register("city", {
                 required: " * Required *",
               })}
+              type="text"
+              value={postInfo.city}
+              onChange={handleChange("city")}
             />
           </div>
         </div>

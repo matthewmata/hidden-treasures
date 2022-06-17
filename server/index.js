@@ -9,18 +9,22 @@ const fastify = require("fastify")({
 //   root: DistPath,
 // });
 
-// const jose = require("jose"); // JWT validation
+fastify.register(require("@fastify/cors"), (instance) => {
+  return (req, callback) => {
+    const corsOptions = {
+      // This is NOT recommended for production as it enables reflection exploits
+      origin: true,
+    };
 
-fastify.decorate("verifyJWT", function (request, reply, done) {
-  console.log(request);
-  done(); // pass an error if the authentication fails
+    // do not include CORS headers for requests from localhost
+    if (/^localhost$/m.test(req.headers.origin)) {
+      corsOptions.origin = false;
+    }
+
+    // callback expects two parameters: error and options
+    callback(null, corsOptions);
+  };
 });
-
-fastify.get("/test", async (request, reply) => {
-  console.log(request);
-  return { hello: "world" };
-});
-
 //database
 const post_routes = require("./routes/posts");
 const category_routes = require("./routes/categories");

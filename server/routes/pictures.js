@@ -1,24 +1,19 @@
 const pictureController = require("../controller/pictures");
 
 const pictures_routes = [
+  // {
+  //   method: "GET",
+  //   url: "/api/pictures",
+  //   handler: pictureController.getAllPictures,
+  // },
   {
     method: "GET",
-    url: "/api/pictures",
-    handler: pictureController.getAllPictures,
-  },
-  {
-    method: "GET",
-    url: "/api/pictures/:picture_id",
-    handler: pictureController.getPicture,
-  },
-  {
-    method: "GET",
-    url: "/api/pictures/post/:post_id",
+    url: "/api/pictures/:post_url_id",
     handler: pictureController.getPicturesForPost,
   },
   {
     method: "POST",
-    url: "/api/pictures/:post_id",
+    url: "/api/pictures",
     handler: pictureController.addPicture,
   },
   {
@@ -28,7 +23,7 @@ const pictures_routes = [
   },
   {
     method: "DELETE",
-    url: "/api/pictures/post/:post_id",
+    url: "/api/pictures/post/:post_url_id",
     handler: pictureController.deletePictureForPost,
   },
 ];

@@ -8,7 +8,7 @@ const posts_routes = [
   },
   {
     method: "GET",
-    url: "/api/posts/:post_id",
+    url: "/api/posts/:post_url_id",
     handler: postController.getPost,
   },
   {
@@ -18,12 +18,12 @@ const posts_routes = [
   },
   {
     method: "PUT",
-    url: "/api/posts/:post_id",
+    url: "/api/posts/:post_url_id",
     handler: postController.updatePost,
   },
   {
     method: "DELETE",
-    url: "/api/posts/:post_id",
+    url: "/api/posts/:post_url_id",
     handler: postController.deletePost,
   },
 ];

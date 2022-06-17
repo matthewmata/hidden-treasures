@@ -1,8 +1,11 @@
 import { createContext } from "react";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
+import { useNavigate } from "react-router-dom";
 import Pool from "./UserPool";
 
 const AccountContext = createContext();
+
+
 
 const Account = ({children}) => {
   const getSession = async () =>
@@ -59,10 +62,14 @@ const Account = ({children}) => {
       });
     });
 
+
+  const navigate = useNavigate();
+
   const logout = () => {
     const user = Pool.getCurrentUser();
     if (user) {
       user.signOut();
+      navigate("/login");
     }
   };
 

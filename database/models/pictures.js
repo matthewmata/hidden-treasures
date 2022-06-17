@@ -12,8 +12,8 @@ module.exports = {
       });
     });
   },
-  getPicture: async (id) => {
-    const sql = `select * from pictures where picture_id = ${id}`;
+  getPicturesForPost: (post_url_id) => {
+    const sql = `select * from pictures where post_url_id = '${post_url_id}'`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -23,19 +23,8 @@ module.exports = {
       });
     });
   },
-  getPicturesForPost: async (id) => {
-    const sql = `select * from pictures where post_id = ${id}`;
-    return new Promise((resolve, reject) => {
-      db.query(sql, (error, results) => {
-        if (error) {
-          return reject(error);
-        }
-        return resolve(results);
-      });
-    });
-  },
-  addPicture: (post_id, url) => {
-    const sql = `insert into pictures (url, post_id) values ('${url}', ${post_id})`;
+  addPicture: (post_url_id, picture_url) => {
+    const sql = `insert into pictures (picture_url, post_url_id) values ('${picture_url}', '${post_url_id}')`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -57,7 +46,7 @@ module.exports = {
     });
   },
   deletePictureForPost: (id) => {
-    const sql = `delete from pictures where post_id = ${id}`;
+    const sql = `delete from pictures where post_url_id = ${id}`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
