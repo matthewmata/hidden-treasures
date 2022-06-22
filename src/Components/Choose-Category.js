@@ -1,22 +1,21 @@
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 const ChooseCategory = ({ setActiveIndex, postInfo, handleChange }) => {
-  const categories = [
-    "appliances",
-    "bikes",
-    "boats",
-    "books",
-    "cars & trucks",
-    "cell phones",
-    "collectibles",
-    "electronics",
-    "furniture",
-    "jewelry",
-    "motorcycles",
-    "musical intruments",
-    "toys & games",
-    "videogames",
-  ];
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+
+    async function fetchData() {
+      const categoriesResponse = await fetch(
+        `http://localhost:3000/api/categories`
+      );
+      const  categoriesJson = await categoriesResponse.json();
+      setCategories(categoriesJson);
+    }
+
+    fetchData();
+  }, []);
 
   const {
     register,
@@ -51,13 +50,13 @@ const ChooseCategory = ({ setActiveIndex, postInfo, handleChange }) => {
             <input
               type="radio"
               name="answer"
-              value={index + 1}
+              value={element.category_id}
               {...register("category_id", {
                 required: " * Required *",
               })}
               onChange={handleChange("category_id")}
             />
-            {" " + element}
+            {" " + element.name}
           </label>
         </div>
       ))}

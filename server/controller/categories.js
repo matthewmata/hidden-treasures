@@ -20,6 +20,16 @@ const getCategory = async (req, reply) => {
   }
 };
 
+const getPostForCategory = async (req, reply) => {
+  const { category_id } = req.params;
+  try {
+    const categoryPosts = await models.getPostForCategory(category_id);
+    reply.code(200).send(categoryPosts);
+  } catch (error) {
+    reply.code(400).send(error);
+  }
+};
+
 const addCategory = async (req, reply) => {
   const { name } = req.body;
   try {
@@ -54,6 +64,7 @@ const deleteCategory = async (req, reply) => {
 module.exports = {
   getAllCategories,
   getCategory,
+  getPostForCategory,
   addCategory,
   updateCategory,
   deleteCategory,

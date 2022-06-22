@@ -16,7 +16,12 @@ const Dropzone = ({ selectedImages, setSelectedImages }) => {
     [selectedImages]
   );
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      "image/png": [".png", ".jpeg", ".jpg"]
+    },
+  });
 
   const deletePicture = (index) => {
     setSelectedImages(selectedImages.filter((_, i) => i !== index));

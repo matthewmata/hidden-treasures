@@ -12,6 +12,11 @@ const categories_routes = [
     handler: categoryController.getCategory,
   },
   {
+    method: "GET",
+    url: "/api/categories/posts/:category_id",
+    handler: categoryController.getPostForCategory,
+  },
+  {
     method: "POST",
     url: "/api/categories",
     handler: categoryController.addCategory,

@@ -12,8 +12,19 @@ module.exports = {
       });
     });
   },
-  getCategory: (id) => {
-    const sql = `select * from categories where category_id = ${id}`;
+  getCategory: (category_id) => {
+    const sql = `select * from categories where category_id = ${category_id}`;
+    return new Promise((resolve, reject) => {
+      db.query(sql, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(results);
+      });
+    });
+  },
+  getPostForCategory: (category_id) => {
+    const sql = `select * from posts where category_id = ${category_id}`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {

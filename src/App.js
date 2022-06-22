@@ -9,7 +9,7 @@ import NewPost from "./Pages/New-Post";
 import Postings from "./Pages/Profile/Postings";
 import Drafts from "./Pages/Profile/Drafts";
 import Settings from "./Pages/Profile/Settings";
-// import Search from "./Pages/Search";
+import Search from "./Pages/Search";
 
 import { Account } from "./auth/Accounts";
 
@@ -23,7 +23,7 @@ function App() {
           <Route path="login" element={<LogIn />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="categories" element={<Categories />} />
-          {/* <Route path="search/:category_id" element={<Search/>} /> */}
+          <Route path="search/:category" element={<Search/>} />
           <Route path="post/:post_url_id" element={<Post />} />
           <Route path="new-post" element={<NewPost />} />
           <Route path="profile/postings" element={<Postings />} />
