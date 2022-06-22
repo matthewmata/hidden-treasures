@@ -15,12 +15,14 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { authenticate, getSession } = useContext(AccountContext);
+  const { authenticate } = useContext(AccountContext);
 
   useEffect(() => {
-    getSession().then(() => {
+    const jwt = sessionStorage.getItem("jwtToken");
+    const payload = sessionStorage.getItem("payload");
+    if (jwt && payload) {
       navigate("/");
-    });
+    }
   }, []);
 
   const handleSubmit = (event) => {
@@ -28,7 +30,8 @@ const Login = () => {
 
     authenticate(email, password)
       .then((data) => {
-        console.log("Logged in!", data);
+        sessionStorage.setItem("jwtToken", data.idToken.jwtToken);
+        sessionStorage.setItem("payload", data.idToken.payload.sub);
         navigate("../");
       })
       .catch((err) => {

@@ -4,7 +4,7 @@ import Home from "./Pages/Home";
 import LogIn from "./Pages/Log-In";
 import SignUp from "./Pages/Sign-Up";
 import Categories from "./Pages/Categories";
-// import Post from "./Pages/Post";
+import Post from "./Pages/Post";
 import NewPost from "./Pages/New-Post";
 import Postings from "./Pages/Profile/Postings";
 import Drafts from "./Pages/Profile/Drafts";
@@ -24,7 +24,7 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="categories" element={<Categories />} />
           {/* <Route path="search/:category_id" element={<Search/>} /> */}
-          {/* <Route path="post/:post_id" element={<Post/>} /> */}
+          <Route path="post/:post_url_id" element={<Post />} />
           <Route path="new-post" element={<NewPost />} />
           <Route path="profile/postings" element={<Postings />} />
           <Route path="profile/drafts" element={<Drafts />} />

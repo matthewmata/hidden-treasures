@@ -69,6 +69,8 @@ const Account = ({children}) => {
     const user = Pool.getCurrentUser();
     if (user) {
       user.signOut();
+      sessionStorage.removeItem("jwtToken");
+      sessionStorage.removeItem("payload");
       navigate("/login");
     }
   };

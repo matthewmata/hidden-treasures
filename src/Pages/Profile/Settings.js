@@ -1,6 +1,5 @@
-import { useState, useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AccountContext } from "../../auth/Accounts";
 import ChangeEmail from "../../Components/Change-Email";
 import ChangePassword from "../../Components/Change-Password";
 
@@ -8,15 +7,15 @@ import Navbar from "../../Components/Navbar";
 import Status from "../../auth/Status";
 
 const Settings = () => {
-  const { getSession } = useContext(AccountContext);
-
- useEffect(() => {
-   getSession().catch(() => {
-     navigate("/login");
-   });
- }, []);
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const jwt = sessionStorage.getItem("jwtToken");
+    const payload = sessionStorage.getItem("payload");
+    if (!(jwt && payload)) {
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <div>

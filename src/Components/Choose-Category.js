@@ -51,7 +51,7 @@ const ChooseCategory = ({ setActiveIndex, postInfo, handleChange }) => {
             <input
               type="radio"
               name="answer"
-              value={index}
+              value={index + 1}
               {...register("category_id", {
                 required: " * Required *",
               })}

@@ -13,7 +13,7 @@ module.exports = {
     });
   },
   getPost: (post_url_id) => {
-    const sql = `select * from posts where post_url_id = ${post_url_id}`;
+    const sql = `select * from posts where post_url_id = '${post_url_id}'`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -40,7 +40,7 @@ module.exports = {
     category_id,
     user_id
   ) => {
-    const sql = `insert into posts (post_url_id, title,price,city,postal_code,description,make,model,size,condition_description,contact_name,email,phone_number,category_id,user_id) values ('${post_url_id}', '${title}', '${price}', '${city}', '${postal_code}', '${description}', '${make}', '${model}', '${size}', '${condition_description}', '${contact_name}', '${email}', '${phone_number}', ${category_id}, ${user_id})`;
+    const sql = `insert into posts (post_url_id, title,price,city,postal_code,description,make,model,size,condition_description,contact_name,email,phone_number,category_id,user_id) values ('${post_url_id}', '${title}', '${price}', '${city}', '${postal_code}', '${description}', '${make}', '${model}', '${size}', '${condition_description}', '${contact_name}', '${email}', '${phone_number}', ${category_id}, '${user_id}')`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {

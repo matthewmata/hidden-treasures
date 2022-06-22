@@ -4,20 +4,20 @@
 const db = require("../index.js");
 
 const categories = [
-  "appliances",
-  "bikes",
-  "boats",
-  "books",
-  "cars & trucks",
-  "cell phones",
-  "collectibles",
-  "electronics",
-  "furniture",
-  "jewelry",
-  "motorcycles",
-  "musical intruments",
-  "toys & games",
-  "videogames",
+  "Appliances",
+  "Bikes",
+  "Boats",
+  "Books",
+  "Cars & Trucks",
+  "Cell Phones",
+  "Collectibles",
+  "Electronics",
+  "Furniture",
+  "Jewelry",
+  "Motorcycles",
+  "Musical Intruments",
+  "Toys & Games",
+  "Videogames",
 ];
 
 const seeder = () => {

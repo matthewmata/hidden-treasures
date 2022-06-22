@@ -1,5 +1,4 @@
-import { useState, useContext, useEffect } from "react";
-import { AccountContext } from "../auth/Accounts";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -14,13 +13,15 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const { getSession } = useContext(AccountContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getSession()
-      .then(() => {
-        navigate("/");
-      })
+    const jwt = sessionStorage.getItem("jwtToken");
+    const payload = sessionStorage.getItem("payload");
+    console.log(jwt && payload);
+    if (jwt && payload) {
+      navigate("/");
+    }
   }, []);
 
   const {
@@ -30,8 +31,6 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate();
-
   const handleSignUp = () => {
     UserPool.signUp(email, password, [], null, (err, data) => {
       if (err) {
@@ -39,8 +38,6 @@ const SignUp = () => {
       } else {
         navigate("../");
       }
-
-      //userSub is UUID
     });
   };
 

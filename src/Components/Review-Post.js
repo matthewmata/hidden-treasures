@@ -5,6 +5,7 @@ const ReviewPost = ({
   postInfo,
   selectedImages,
   handleFormSubmit,
+  handleFeaturedImage,
 }) => {
   return (
     <div className="new-post-container">
@@ -46,7 +47,11 @@ const ReviewPost = ({
         </div>
       </section>
 
-      <Item postInfo={postInfo} selectedImages={selectedImages} />
+      <Item
+        postInfo={postInfo}
+        selectedImages={selectedImages}
+        handleFeaturedImage={handleFeaturedImage}
+      />
 
       <div className="columns">
         <div className="column">

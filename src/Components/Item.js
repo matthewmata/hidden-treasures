@@ -1,30 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Item = ({ postInfo, selectedImages }) => {
-  const [images, setImages] = useState([...selectedImages]);
-
-  const handleFeaturedImage = (index) => {
-      const nonFeaturedImages = images.slice(1);
-      const newFeaturedImage = nonFeaturedImages.splice(index, 1);
-      setImages([...newFeaturedImage, images[0], ...nonFeaturedImages]);
-  }
-
-  const separator = (numb) => {
+const Item = ({ postInfo, selectedImages, handleFeaturedImage }) => {
+const separator = (numb) => {
     var str = numb.toString().split(".");
     str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return str.join(".");
   };
 
   return (
-    <div className="">
+    <div className="new-post-container">
       <h2 className="new-post-title">
         <strong>{`${postInfo.title} - $${separator(postInfo.price)}`}</strong>
       </h2>
       <div className="columns">
         <div className="column">
-          <img alt="Featured Item" src={images[0]?.preview} />
+          <img alt="Featured Item" src={selectedImages[0]?.preview} />
           <div className="columns images-container">
-            {images.slice(1)?.map((file, index) => (
+            {selectedImages.slice(1)?.map((file, index) => (
               <div
                 className="column has-text-right item-container"
                 onClick={() => handleFeaturedImage(index)}

@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-import { AccountContext } from "../auth/Accounts";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Hero from "../Components/Hero";
@@ -8,12 +7,12 @@ import Footer from "../Components/Footer";
 const Categories = () => {
   const navigate = useNavigate();
 
-  const { getSession } = useContext(AccountContext);
-
   useEffect(() => {
-    getSession().catch(() => {
+    const jwt = sessionStorage.getItem("jwtToken");
+    const payload = sessionStorage.getItem("payload");
+    if (!(jwt && payload)) {
       navigate("/login");
-    });
+    }
   }, []);
 
   const categories = [
