@@ -31,31 +31,62 @@ const Item = ({ postInfo, selectedImages, handleFeaturedImage }) => {
         </div>
         <div className="column">
           <p className="post-text">{postInfo.description}</p>
-
-          <div className="button item-tag">
-            Make / Manufacturer: <strong>{postInfo?.make}</strong>
-          </div>
-          <div className="button item-tag">
-            Model Name / Number: <strong>{postInfo?.model}</strong>
-          </div>
-          <div className="button item-tag">
-            Size Dimensions: <strong>{postInfo?.size}</strong>
-          </div>
-          <div className="button item-tag">
-            Condition: <strong>{postInfo?.condition_description}</strong>
-          </div>
-          <div className="button item-tag">
-            Contact Name: <strong>{postInfo?.contact_name}</strong>
-          </div>
-          <div className="button item-tag">
-            Email: <strong>{postInfo?.email}</strong>
-          </div>
-          <div className="button item-tag">
-            Phone Number: <strong>{postInfo?.phone_number}</strong>
-          </div>
-          <div className="button item-tag">
-            Postal Code: <strong>{postInfo?.postal_code}</strong>
-          </div>
+          {postInfo.make ? (
+            <div className="button item-tag">
+              Make / Manufacturer: <strong>{postInfo?.make}</strong>
+            </div>
+          ) : (
+            ""
+          )}
+          {postInfo.model ? (
+            <div className="button item-tag">
+              Model Name / Number: <strong>{postInfo?.model}</strong>
+            </div>
+          ) : (
+            ""
+          )}
+          {postInfo.size ? (
+            <div className="button item-tag">
+              Size Dimensions: <strong>{postInfo?.size}</strong>
+            </div>
+          ) : (
+            ""
+          )}
+          {postInfo.condition_description ? (
+            <div className="button item-tag">
+              Condition: <strong>{postInfo?.condition_description}</strong>
+            </div>
+          ) : (
+            ""
+          )}
+          {postInfo.contact_name ? (
+            <div className="button item-tag">
+              Contact Name: <strong>{postInfo?.contact_name}</strong>
+            </div>
+          ) : (
+            ""
+          )}
+          {postInfo.email ? (
+            <div className="button item-tag">
+              Email: <strong>{postInfo?.email}</strong>
+            </div>
+          ) : (
+            ""
+          )}
+          {postInfo.phone_number ? (
+            <div className="button item-tag">
+              Phone Number: <strong>{postInfo?.phone_number}</strong>
+            </div>
+          ) : (
+            ""
+          )}
+          {postInfo.postal_code ? (
+            <div className="button item-tag">
+              Postal Code: <strong>{postInfo?.postal_code}</strong>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

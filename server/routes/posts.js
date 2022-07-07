@@ -9,17 +9,17 @@ const posts_routes = [
   {
     method: "GET",
     url: "/api/posts/:post_url_id",
-    handler: postController.getPost,
+    handler: postController.getPostByPostID,
+  },
+  {
+    method: "GET",
+    url: "/api/posts/category/:category_name",
+    handler: postController.getPostsByCategoryName,
   },
   {
     method: "POST",
     url: "/api/posts",
     handler: postController.addPost,
-  },
-  {
-    method: "PUT",
-    url: "/api/posts/:post_url_id",
-    handler: postController.updatePost,
   },
   {
     method: "DELETE",

@@ -23,8 +23,8 @@ module.exports = {
       });
     });
   },
-  addPicture: (post_url_id, picture_url) => {
-    const sql = `insert into pictures (picture_url, post_url_id) values ('${picture_url}', '${post_url_id}')`;
+  getPictureForPreview: (post_url_id) => {
+    const sql = `select * from pictures where post_url_id = '${post_url_id}' limit 1`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -34,8 +34,8 @@ module.exports = {
       });
     });
   },
-  deletePicture: (id) => {
-    const sql = `delete from pictures where picture_id = ${id}`;
+  addPicture: (post_url_id, picture_url) => {
+    const sql = `insert into pictures (picture_url, post_url_id) values ('${picture_url}', '${post_url_id}')`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {

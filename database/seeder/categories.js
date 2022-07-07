@@ -15,7 +15,7 @@ const categories = [
   "Furniture",
   "Jewelry",
   "Motorcycles",
-  "Musical Intruments",
+  "Musical Instruments",
   "Toys & Games",
   "Videogames",
 ];

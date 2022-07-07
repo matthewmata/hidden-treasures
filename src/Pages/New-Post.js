@@ -18,7 +18,7 @@ const NewPost = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [postInfo, setPostInfo] = useState({});
   const [selectedImages, setSelectedImages] = useState([]);
-  const [user_id, setUser_id] = useState('');
+  const [user_id, setUser_id] = useState("");
 
   const navigate = useNavigate();
 
@@ -38,16 +38,17 @@ const NewPost = () => {
 
   // change localhosts after deployment
   const handleFormSubmit = (selectedImages) => {
-    let post_url_id = uuidv4().replaceAll('-', '');
-    axios
-      .post(`http://localhost:3000/api/posts`, {
+    async function postData() {
+      let post_url_id = uuidv4().replaceAll("-", "");
+
+      await axios.post(`http://localhost:3000/api/posts`, {
         post_url_id,
         ...postInfo,
         user_id,
-      })
-      .then(() => {
+      });
+      if (selectedImages.length > 0) {
         selectedImages.forEach(async (image) => {
-          let image_uuid = uuidv4().replaceAll('-', '');
+          let image_uuid = uuidv4().replaceAll("-", "");
           await S3BucketUpload(image, `${image_uuid}.jpeg`);
           let picture_url = `https://hidden-treasures-images.s3.amazonaws.com/${image_uuid}`;
           // let picture_url = `https://${process.env.REACT_APP.AWS_S3_BUCKET_NAME}.s3.amazonaws.com/${image_uuid}`;
@@ -56,9 +57,17 @@ const NewPost = () => {
             picture_url,
           });
         });
-      }).then(() => {
-        navigate(`/`);
-      });
+      } else {
+        await axios.post(`http://localhost:3000/api/pictures`, {
+          post_url_id,
+          picture_url:
+            "https://hidden-treasures-images.s3.amazonaws.com/no-image",
+        });
+      }
+
+      navigate(`/`);
+    }
+    postData();
   };
 
   const handleFeaturedImage = (index) => {

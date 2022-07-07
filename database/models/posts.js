@@ -12,8 +12,19 @@ module.exports = {
       });
     });
   },
-  getPost: (post_url_id) => {
+  getPostByPostID: (post_url_id) => {
     const sql = `select * from posts where post_url_id = '${post_url_id}'`;
+    return new Promise((resolve, reject) => {
+      db.query(sql, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(results);
+      });
+    });
+  },
+  getPostsByCategoryName: (category_name) => {
+    const sql = `select * from posts P inner join categories C on C.name ='${category_name}' and P.category_id = C.category_id`;
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {
@@ -40,47 +51,68 @@ module.exports = {
     category_id,
     user_id
   ) => {
-    const sql = `insert into posts (post_url_id, title,price,city,postal_code,description,make,model,size,condition_description,contact_name,email,phone_number,category_id,user_id) values ('${post_url_id}', '${title}', '${price}', '${city}', '${postal_code}', '${description}', '${make}', '${model}', '${size}', '${condition_description}', '${contact_name}', '${email}', '${phone_number}', ${category_id}, '${user_id}')`;
-    return new Promise((resolve, reject) => {
-      db.query(sql, (error, results) => {
-        if (error) {
-          return reject(error);
-        }
-        return resolve(results);
-      });
+    const sqlValues = [
+      post_url_id,
+      title,
+      price,
+      city,
+      postal_code,
+      description,
+      make,
+      model,
+      size,
+      condition_description,
+      contact_name,
+      email,
+      phone_number,
+      category_id,
+      user_id,
+    ];
+    const sqlKeys = [
+      "post_url_id",
+      "title",
+      "price",
+      "city",
+      "postal_code",
+      "description",
+      "make",
+      "model",
+      "size",
+      "condition_description",
+      "contact_name",
+      "email",
+      "phone_number",
+      "category_id",
+      "user_id",
+    ];
+
+    let sql = "insert into posts (";
+
+    sqlKeys.forEach((el, i, arr) => {
+      if (sqlValues[i] !== undefined) {
+        sql += el;
+      }
+      if (sqlValues[i] !== undefined && arr.length - 1 !== i) {
+        sql += ",";
+      }
     });
-  },
-  updatePost: (
-    post_url_id,
-    title,
-    price,
-    city,
-    postal_code,
-    description,
-    make,
-    model,
-    size,
-    condition_description,
-    contact_name,
-    email,
-    phone_number
-  ) => {
-    const sql = `update posts 
-    set 
-      title = '${title}', 
-      price = '${price}', 
-      city = '${city}', 
-      postal_code = '${postal_code}', 
-      description = '${description}', 
-      make = '${make}', 
-      model = '${model}', 
-      size = '${size}', 
-      condition_description = '${condition_description}', 
-      contact_name = '${contact_name}', 
-      email = '${email}', 
-      phone_number = '${phone_number}' 
-    where 
-      post_url_id = ${post_url_id}`;
+
+    sql += ") values (";
+
+    sqlValues.forEach((el, i, arr) => {
+      if (el !== undefined && sqlKeys[i] !== "category_id") {
+        sql += `'${el}'`;
+      }
+      if (el !== undefined && sqlKeys[i] === "category_id") {
+        sql += `${el}`;
+      }
+      if (el !== undefined && arr.length - 1 !== i) {
+        sql += ",";
+      }
+    });
+
+    sql += ")";
+
     return new Promise((resolve, reject) => {
       db.query(sql, (error, results) => {
         if (error) {

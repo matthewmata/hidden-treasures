@@ -1,31 +1,28 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import diamond from "../images/diamond.svg"
-
+import diamond from "../images/diamond.svg";
 
 const Navbar = () => {
   const [isActive, setisActive] = useState(false);
   const navigate = useNavigate();
   const categories = [
-    "all",
-    "appliances",
-    "bikes",
-    "boats",
-    "books",
-    "cars & trucks",
-    "cell phones",
-    "collectibles",
-    "electronics",
-    "furniture",
-    "jewelry",
-    "motorcycles",
-    "musical intruments",
-    "toys & games",
-    "videogames",
+    "All",
+    "Appliances",
+    "Bikes",
+    "Boats",
+    "Books",
+    "Cars & Trucks",
+    "Cell Phones",
+    "Collectibles",
+    "Electronics",
+    "Furniture",
+    "Jewelry",
+    "Motorcycles",
+    "Musical Instruments",
+    "Toys & Games",
+    "Videogames",
   ];
-;
-
 
   return (
     <div className="nav-container">
@@ -78,7 +75,14 @@ const Navbar = () => {
               </a>
               <div className="navbar-dropdown">
                 {categories.map((element, index) => (
-                  <a className="navbar-item" key={index} href={() => false}>
+                  <a
+                    className="navbar-item"
+                    key={index}
+                    href={() => false}
+                    onClick={() => {
+                      navigate(`/search/${element}`);
+                    }}
+                  >
                     {element}
                   </a>
                 ))}

@@ -20,21 +20,21 @@ const getPicturesForPost = async (req, reply) => {
   }
 };
 
+const getPictureForPreview = async (req, reply) => {
+  const { post_url_id } = req.params;
+  try {
+    const pictures = await models.getPictureForPreview(post_url_id);
+    reply.code(200).send(pictures);
+  } catch (error) {
+    reply.code(400).send(error);
+  }
+}
+
 const addPicture = async (req, reply) => {
   const { post_url_id, picture_url } = req.body;
   try {
     await models.addPicture(post_url_id, picture_url);
     reply.code(201).send("Successfully created new picture");
-  } catch (error) {
-    reply.code(400).send(error);
-  }
-};
-
-const deletePicture = async (req, reply) => {
-  const { picture_id } = req.params;
-  try {
-    await models.deletePicture(picture_id);
-    reply.code(200).send("Successfully deleted picture");
   } catch (error) {
     reply.code(400).send(error);
   }
@@ -53,8 +53,8 @@ const deletePictureForPost = async (req, reply) => {
 module.exports = {
   getAllPictures,
   getPicturesForPost,
+  getPictureForPreview,
   addPicture,
-  deletePicture,
   deletePictureForPost
 };
 

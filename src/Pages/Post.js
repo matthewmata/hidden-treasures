@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Navbar from "../Components/Navbar";
 import Hero from "../Components/Hero";
@@ -8,24 +7,11 @@ import Item from "../Components/Item";
 import Footer from "../Components/Footer";
 
 const Post = () => {
-  const [post_url_id, setPostURL] = useState(
-    window.location.pathname.split("/").pop()
-  );
-  const [postInfo, setPostInfo] = useState({ title: 'loading',price: '...' });
+  const [postInfo, setPostInfo] = useState({ title: "loading", price: "..." });
   const [selectedImages, setSelectedImages] = useState([]);
   const [category, setCategory] = useState("");
 
-  const handleFeaturedImage = (index) => {
-    const nonFeaturedImages = selectedImages.slice(1);
-    const newFeaturedImage = nonFeaturedImages.splice(index, 1);
-    setSelectedImages([
-      ...newFeaturedImage,
-      selectedImages[0],
-      ...nonFeaturedImages,
-    ]);
-  };
-
-
+  const { post_id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,7 +23,7 @@ const Post = () => {
 
     async function fetchData() {
       const postInfoResponse = await fetch(
-        `http://localhost:3000/api/posts/${post_url_id}`
+        `http://localhost:3000/api/posts/${post_id}`
       );
       const postInfoJson = await postInfoResponse.json();
       setPostInfo(postInfoJson[0]);
@@ -56,11 +42,20 @@ const Post = () => {
       );
       const categoryIDJson = await categoryIDResponse.json();
       setCategory(categoryIDJson[0].name);
-    
     }
 
     fetchData();
-  }, []);
+  }, [post_id]);
+
+  const handleFeaturedImage = (index) => {
+    const nonFeaturedImages = selectedImages.slice(1);
+    const newFeaturedImage = nonFeaturedImages.splice(index, 1);
+    setSelectedImages([
+      ...newFeaturedImage,
+      selectedImages[0],
+      ...nonFeaturedImages,
+    ]);
+  };
 
   return (
     <div>

@@ -1,28 +1,23 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Hero from "../Components/Hero";
+import Card from "../Components/Card";
 
 const Search = () => {
-  const [category, setCategory] = useState(
-    capitalizeFirstLetter(
-      window.location.pathname
-        .split("/")
-        .pop()
-        .replaceAll("%20", " ")
-        .replace(/(?:^|\s)\S/g, function (a) {
-          return a.toUpperCase();
-        })
-    )
+  const { category } = useParams();
+  
+  const [categoryName, setCategoryName] = useState(
+    category.replace(/(?:^|\s)\S/g, function (a) {
+      return a.toUpperCase();
+    })
   );
-  const[posts, setPosts] = useState([])
-
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     const jwt = sessionStorage.getItem("jwtToken");
@@ -32,35 +27,31 @@ const Search = () => {
     }
 
     async function fetchData() {
-      const categoryIDResponse = await fetch(
-        `http://localhost:3000/api/categories`
-      );
-      const categoryIDJson = await categoryIDResponse.json();
-      let categoryID = null;
-      categoryIDJson.forEach((cat) => {
-        if (cat.name === category) {
-          categoryID = cat.category_id;
-        }
-      });
-      
-      const postsResponse = await fetch(
-        `http://localhost:3000/api/categories/posts/${categoryID}`
-      );
-      const postsJson = await postsResponse.json();
+      if (categoryName !== 'All') {
+        const postsResponse = await fetch(
+          `http://localhost:3000/api/posts/category/${categoryName}`
+        );
+        var postsJson = await postsResponse.json();
+      } else {
+        const postsResponse = await fetch(
+          `http://localhost:3000/api/posts`
+        );
+        var postsJson = await postsResponse.json();
+      }
       setPosts(postsJson);
-      console.log(postsJson)
     }
 
     fetchData();
-
-  }, []);
+  }, [category]);
   return (
     <div>
       <Navbar />
-      <Hero title={category} />
-      {posts.map((post) => (
-        <a onClick={() => navigate(`/post/${post.post_url_id}`)}>Post</a>
-      ))}
+      <Hero title={categoryName} />
+      <div className="columns">
+        {posts.map((post, index) => (
+          <Card className="column is-one-quarter" post={post} key={index}/>
+        ))}
+      </div>
       <Footer />
     </div>
   );

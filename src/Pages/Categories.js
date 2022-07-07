@@ -16,21 +16,21 @@ const Categories = () => {
   }, []);
 
   const categories = [
-    "all",
-    "appliances",
-    "bikes",
-    "boats",
-    "books",
-    "cars & trucks",
-    "cell phones",
-    "collectibles",
-    "electronics",
-    "furniture",
-    "jewelry",
-    "motorcycles",
-    "musical intruments",
-    "toys & games",
-    "videogames",
+    "All",
+    "Appliances",
+    "Bikes",
+    "Boats",
+    "Books",
+    "Cars & Trucks",
+    "Cell Phones",
+    "Collectibles",
+    "Electronics",
+    "Furniture",
+    "Jewelry",
+    "Motorcycles",
+    "Musical Intruments",
+    "Toys & Games",
+    "Videogames",
   ];
 
   return (

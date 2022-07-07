@@ -1,4 +1,4 @@
-import Item from "./Item"
+import Item from "./Item";
 
 const ReviewPost = ({
   setActiveIndex,
@@ -7,6 +7,17 @@ const ReviewPost = ({
   handleFormSubmit,
   handleFeaturedImage,
 }) => {
+
+  const images = selectedImages.length >= 1
+    ? selectedImages
+    : [
+        {
+          preview:
+            "https://hidden-treasures-images.s3.amazonaws.com/no-image.jpeg",
+        },
+      ];
+
+
   return (
     <div className="new-post-container">
       <div className="columns">
@@ -49,7 +60,7 @@ const ReviewPost = ({
 
       <Item
         postInfo={postInfo}
-        selectedImages={selectedImages}
+        selectedImages={images}
         handleFeaturedImage={handleFeaturedImage}
       />
 
