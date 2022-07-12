@@ -23,7 +23,10 @@ const Card = ({ post }) => {
   };
 
   return (
-    <div className="card" onClick={() => navigate(`/post/${post.post_url_id}`)}>
+    <div
+      className="card column is-one-quarter"
+      onClick={() => navigate(`/post/${post.post_url_id}`)}
+    >
       <div className="card-image">
         <figure className="image is-4by3">
           <img src={image} alt="Placeholder image" />

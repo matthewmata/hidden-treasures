@@ -85,7 +85,7 @@ const SignUp = () => {
                     </strong>
                     <input
                       className="input"
-                      type="text"
+                      type="password"
                       value={password}
                       {...register("password", {
                         required: " * Required *",
@@ -97,7 +97,7 @@ const SignUp = () => {
                     <label>Confirm Password</label>
                     <input
                       className="input"
-                      type="text"
+                      type="password"
                       value={confirmPassword}
                       {...register("confirmPassword", {
                         validate: {

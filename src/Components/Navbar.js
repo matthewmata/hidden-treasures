@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AccountContext } from "../auth/Accounts";
+
+
 
 import diamond from "../images/diamond.svg";
 
 const Navbar = () => {
   const [isActive, setisActive] = useState(false);
+
   const navigate = useNavigate();
+
+  const { logout } = useContext(AccountContext);
+
   const categories = [
     "All",
     "Appliances",
@@ -100,12 +107,8 @@ const Navbar = () => {
                 >
                   <strong>New Post</strong>
                 </a>
-                <a
-                  onClick={() => navigate("/profile/postings")}
-                  className="button"
-                  href={() => false}
-                >
-                  Profile
+                <a onClick={logout} className="button" href={() => false}>
+                  Log Out
                 </a>
               </div>
             </div>
