@@ -43,10 +43,10 @@ const Search = () => {
 
   const cards = [];
 
-  for (var i = 0; i < posts.length; i += 4) {
+  for (var i = posts.length - 1; i >= 0; i -= 4) { // 5 1
     var cardRow = [];
     cards.push(cardRow);
-    for (var j = i; j < i + 4 && posts[j] !== undefined; j++) {
+    for (var j = i; j >= i - 4 && posts[j] !== undefined; j--) {
       cardRow.push(posts[j]);
     }
   }

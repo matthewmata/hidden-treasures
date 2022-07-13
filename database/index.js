@@ -6,8 +6,34 @@ var connection = mysql.createConnection({
   database: "hidden_treasures",
 });
 
+// const connection = mysql.createConnection({
+//   host: "",
+//   user: "",
+//   password: "",
+//   database: "",
+//   port: 
+// });
+
+// const tunnelConfig = {
+//   host: process.env.DB_SSH_HOST,
+//   port: 22,
+//   username: process.env.DB_SSH_USER,
+//   password: process.env.DB_SSH_PASSWORD,
+// };
+
+// const tunnelConfig = {
+//   host: process.env.DB_SSH_HOST,
+//   port: 22,
+//   username: process.env.DB_SSH_USER,
+//   password: process.env.DB_SSH_PASSWORD,
+// };
+
 connection.connect((err) => {
-  if (err) console.error(err);
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("connected");
+  }
 });
 
 module.exports = connection;
