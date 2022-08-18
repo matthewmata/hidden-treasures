@@ -1,4 +1,5 @@
 var mysql = require("mysql");
+
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -6,27 +7,15 @@ var connection = mysql.createConnection({
   database: "hidden_treasures",
 });
 
-// const connection = mysql.createConnection({
-//   host: "",
-//   user: "",
-//   password: "",
-//   database: "",
-//   port: 
+// uncomment for AWS RDS
+
+// var connection = mysql.createConnection({
+//   host: process.env.MYSQL_HOST,
+//   user: process.env.MYSQL_USER,
+//   password: process.env.MYSQL_PASSWORD,
+//   database: process.env.MYSQL_DATABASE,
+//   port: 3306,
 // });
-
-// const tunnelConfig = {
-//   host: process.env.DB_SSH_HOST,
-//   port: 22,
-//   username: process.env.DB_SSH_USER,
-//   password: process.env.DB_SSH_PASSWORD,
-// };
-
-// const tunnelConfig = {
-//   host: process.env.DB_SSH_HOST,
-//   port: 22,
-//   username: process.env.DB_SSH_USER,
-//   password: process.env.DB_SSH_PASSWORD,
-// };
 
 connection.connect((err) => {
   if (err) {

@@ -33,7 +33,7 @@ const NewPost = () => {
 
   const handleChange = (name) => (e) => {
     setPostInfo({ ...postInfo, [name]: e.target.value });
-    console.log(postInfo);
+    // console.log(postInfo);
   };
 
   // change localhosts after deployment

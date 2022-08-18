@@ -13,8 +13,8 @@ const ChangePassword = () => {
     getSession().then(({ user, email }) => {
       authenticate(email, password).then(() => {
         user.changePassword(password, newPassword, (err, result) => {
-          if (err) console.error(err);
-          console.log(result);
+          // if (err) console.error(err);
+          // console.log(result);
         });
       });
     });

@@ -18,7 +18,7 @@ const SignUp = () => {
   useEffect(() => {
     const jwt = sessionStorage.getItem("jwtToken");
     const payload = sessionStorage.getItem("payload");
-    console.log(jwt && payload);
+    // console.log(jwt && payload);
     if (jwt && payload) {
       navigate("/");
     }

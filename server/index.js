@@ -1,18 +1,9 @@
-const fastify = require("fastify")({
-  logger: true,
-});
+const fastify = require("fastify")();
 
-// const path = require("path");
-// const DistPath = path.join(__dirname, "..", "build");
-
-// fastify.register(require("fastify-static"), {
-//   root: DistPath,
-// });
 
 fastify.register(require("@fastify/cors"), (instance) => {
   return (req, callback) => {
     const corsOptions = {
-      // This is NOT recommended for production as it enables reflection exploits
       origin: true,
     };
 
@@ -25,6 +16,7 @@ fastify.register(require("@fastify/cors"), (instance) => {
     callback(null, corsOptions);
   };
 });
+
 //database
 const post_routes = require("./routes/posts");
 const category_routes = require("./routes/categories");

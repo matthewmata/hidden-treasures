@@ -18,8 +18,8 @@ const ChangeEmail = () => {
         ];
 
         user.updateAttributes(attributes, (err, results) => {
-            if (err) console.error(err);
-            console.log(results);
+            // if (err) console.error(err);
+            // console.log(results);
         })
       });
     });

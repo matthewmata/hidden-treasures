@@ -25,13 +25,13 @@ const ForgotPassword = ({ backToLogin }) => {
 
     getUser().forgotPassword({
       onSuccess: (data) => {
-        console.log("onSuccess:", data);
+        // console.log("onSuccess:", data);
       },
       onFailure: (err) => {
-        console.error("onFailure:", err);
+        // console.error("onFailure:", err);
       },
       inputVerificationCode: (data) => {
-        console.log("Input code:", data);
+        // console.log("Input code:", data);
         setStage(2);
       },
     });
@@ -48,10 +48,10 @@ const ForgotPassword = ({ backToLogin }) => {
     getUser().confirmPassword(code, password, {
       onSuccess: (data) => {
         backToLogin(1);
-        console.log("onSuccess:", data);
+        // console.log("onSuccess:", data);
       },
       onFailure: (err) => {
-        console.error("onFailure:", err);
+        // console.error("onFailure:", err);
       },
     });
   };
