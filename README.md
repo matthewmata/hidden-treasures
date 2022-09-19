@@ -1,6 +1,4 @@
-# product-description-service
-
-> Hidden Treasures
+# Hidden Treasures
 
 ## Table of Contents
 
@@ -26,4 +24,4 @@ Nodejs, Fastify, React
 
 * [react.js](https://reactjs.org/docs/getting-started.html) - React documentation
 * [fastify.js](https://www.fastify.io) - Fastify documentation
-* [mysql](https://www.mysql.com/) - Mongoose documentation
+* [mysql](https://www.mysql.com/) - MySQL documentation
